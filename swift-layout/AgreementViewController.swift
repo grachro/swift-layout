@@ -10,6 +10,9 @@ import UIKit
 
 class AgreementViewController: UIViewController {
 
+    
+
+    
     //アジャイルソフトウェア宣言
     //http://agilemanifesto.org/iso/ja/
     let texts = [
@@ -62,13 +65,25 @@ class AgreementViewController: UIViewController {
             baseView = bodyLabel
         }
         
+
+        //戻るボタン
+        addReturnBtn()
     }
 
-
+    var touchBlocks = TouchBlocks()
+    
+    private func addReturnBtn() {
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, container: self.view)
+            .bottomIsSameContainer()
+            .rightIsSameContainer()
+        touchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+    
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class Sample1ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,6 +78,22 @@ class Sample1ViewController: UIViewController {
         Layout.regist(lbl下, container: self.view)
             .bottomIsSame(lbl右下)
             .horizontalCenterIsSame(lbl中央)
+    
+        //戻るボタン
+        addReturnBtn()
+    }
+    
+    var touchBlocks = TouchBlocks()
+    
+    private func addReturnBtn() {
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, container: self.view)
+            .bottomIsSameContainer()
+            .rightIsSameContainer()
+        touchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

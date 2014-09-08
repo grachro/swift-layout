@@ -42,6 +42,24 @@ class Sample2ViewController: UIViewController {
             .height(60)
         
         Layout.horizontalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3], coverSpace: true)
+        
+        
+        //戻るボタン
+        addReturnBtn()
+    }
+    
+    var touchBlocks = TouchBlocks()
+    
+    private func addReturnBtn() {
+        
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, container: self.view)
+            .bottomIsSameContainer()
+            .rightIsSameContainer()
+        touchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+        
     }
     
  

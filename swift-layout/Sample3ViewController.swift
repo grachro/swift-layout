@@ -19,7 +19,12 @@ class Sample3ViewController: UIViewController {
         threeItems()
         fourItems()
         
+        
+        //戻るボタン
+        addReturnBtn()
     }
+    
+
     
     func threeItems() {
         var l1 = UILabel()
@@ -90,6 +95,18 @@ class Sample3ViewController: UIViewController {
         
     }
     
+    var touchBlocks = TouchBlocks()
+    private func addReturnBtn() {
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, container: self.view)
+            .bottomIsSameContainer()
+            .rightIsSameContainer()
+        touchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
