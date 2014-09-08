@@ -46,6 +46,12 @@ class LayoutBottom {
         self._size = size
     }
     
+    func fromTop(base:UIView) -> Layout{
+        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: -self._size)
+        self._layout.container.addConstraint(l)
+        return self._layout
+    }
+    
     func fromBottom(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: -self._size)
         self._layout.container.addConstraint(l)

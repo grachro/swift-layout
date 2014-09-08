@@ -16,7 +16,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let btn1 = Layout.createSystemTypeBtn("サンプル画面1へ")
+        
+        let btn0 = Layout.createSystemTypeBtn("サンプル画面aへ")
+        self.touchBlocks.append(btn0) {
+            self.presentViewController(Sample0ViewController(), animated: true, completion: nil)
+        }
+        Layout.regist(btn0, container: self.view)
+            .left(40).fromContainerLeft()
+        
+        
+        let btn1 = Layout.createSystemTypeBtn("サンプル画面bへ")
         self.touchBlocks.append(btn1) {
             self.presentViewController(Sample1ViewController(), animated: true, completion: nil)
         }
@@ -61,7 +70,7 @@ class ViewController: UIViewController {
         
         
         
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn1,btn2,btn3,btn4,btn5], coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn1,btn2,btn3,btn4,btn5], coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {
