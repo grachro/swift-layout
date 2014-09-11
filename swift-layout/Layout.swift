@@ -20,20 +20,20 @@ class LayoutTop {
     
     func fromTop(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
-
+    
     func fromContainerTop() -> Layout{
         return fromTop(self._layout.container)
     }
     
     func fromBottom(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
-
+    
 }
 
 
@@ -48,20 +48,20 @@ class LayoutBottom {
     
     func fromTop(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: -self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromBottom(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: -self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromContainerBottom() -> Layout{
         return fromBottom(self._layout.container)
     }
-
+    
 }
 
 
@@ -77,13 +77,13 @@ class LayoutLeft {
     
     func fromLeft(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromRight(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
@@ -103,13 +103,13 @@ class LayoutRight {
     
     func fromLeft(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: -self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromRight(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: -self._size)
-        self._layout.container.addConstraint(l)
+        self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
@@ -134,12 +134,18 @@ class Layout {
     
     private let target:UIView
     private let container:UIView
+    private var _constraint:NSLayoutConstraint? = nil
     
     private init(view:UIView, container:UIView) {
         self.target = view
         self.container = container
     }
     
+    
+    func addLayoutConstraint(constraint:NSLayoutConstraint) {
+        self._constraint = constraint
+        self.container.addConstraint(constraint)
+    }
     
     func top(size:CGFloat) -> LayoutTop {
         return LayoutTop(layout: self, size: size)
@@ -152,19 +158,19 @@ class Layout {
     func topIsSameContainer() -> Layout {
         return topIsSame(self.container)
     }
-
+    
     func bottom(size:CGFloat) -> LayoutBottom {
         return LayoutBottom(layout: self, size: size)
     }
-
+    
     func bottomIsSame(base:UIView) -> Layout {
         return LayoutBottom(layout: self, size: 0).fromBottom(base)
     }
-
+    
     func bottomIsSameContainer() -> Layout {
         return bottomIsSame(self.container)
     }
-
+    
     func left(size:CGFloat) -> LayoutLeft {
         return LayoutLeft(layout: self, size: size)
     }
@@ -176,11 +182,11 @@ class Layout {
     func leftIsSameContainer() -> Layout {
         return leftIsSame(self.container)
     }
-
+    
     func right(size:CGFloat) -> LayoutRight {
         return LayoutRight(layout: self, size: size)
     }
-
+    
     func rightIsSame(base:UIView) -> Layout {
         return LayoutRight(layout: self, size: 0).fromRight(base)
     }
@@ -188,53 +194,53 @@ class Layout {
     func rightIsSameContainer() -> Layout {
         return rightIsSame(self.container)
     }
-
+    
     func width(size:CGFloat) -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func widthIsSame(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .Width, relatedBy: .Equal, toItem: base, attribute: .Width, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func height(size:CGFloat) -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func heightIsSame(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .Height, relatedBy: .Equal, toItem: base, attribute: .Height, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func horizontalCenterIsSame(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: base, attribute: .CenterX, relatedBy: .Equal, toItem: self.target, attribute: .CenterX, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func verticalCenterIsSame(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: base, attribute: .CenterY, relatedBy: .Equal, toItem: self.target, attribute: .CenterY, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     
     func horizontalCenterInContainer() -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .CenterX, relatedBy: .Equal, toItem: self.container, attribute: .CenterX, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
     
     func verticalCenterInContainer() -> Layout {
         let l =  NSLayoutConstraint(item: self.target, attribute: .CenterY, relatedBy: .Equal, toItem: self.container, attribute: .CenterY, multiplier: 1.0, constant: 0)
-        self.container.addConstraint(l)
+        self.addLayoutConstraint(l)
         return self
     }
 }
@@ -257,7 +263,7 @@ extension Layout {
         let l =  NSLayoutConstraint(item: spacer, attribute: .Trailing, relatedBy: .Equal, toItem: base, attribute: .Trailing, multiplier: 1.0, constant: 0)
         container.addConstraint(l)
     }
-
+    
     
     class func horizontalEvenSpaceInCotainer(#container:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
@@ -318,7 +324,7 @@ extension Layout {
         }
         Layout.addLastForH(container, spacer: spacers[views.count], base: trailingView)
     }
-
+    
 }
 
 
@@ -408,42 +414,101 @@ extension Layout {
     
 }
 
-//text系
+//text,label系
 extension Layout {
     
     func fitWidthFromText() -> Layout {
+        
         if self.target is UILabel {
             let ui = self.target as UILabel
             ui.sizeToFit()
             self.width(ui.frame.size.width)
+        
         }
+
         return self
     }
     
     func textAlignmentIsLeft() -> Layout {
         if self.target is UILabel {
-            let ui = self.target as UILabel
-            ui.textAlignment = .Left
+            (self.target as UILabel).textAlignment = .Left
+        } else if self.target is UITextField {
+            (self.target as UITextField).textAlignment = .Left
         }
         return self
     }
     
     func textAlignmentIsCenter() -> Layout {
         if self.target is UILabel {
-            let ui = self.target as UILabel
-            ui.textAlignment = .Center
+            (self.target as UILabel).textAlignment = .Center
+        } else if self.target is UITextField {
+            (self.target as UITextField).textAlignment = .Center
         }
         return self
     }
     
     func textAlignmentIsRight() -> Layout {
         if self.target is UILabel {
-            let ui = self.target as UILabel
-            ui.textAlignment = .Right
+            (self.target as UILabel).textAlignment = .Right
+        } else if self.target is UITextField {
+            (self.target as UITextField).textAlignment = .Right
         }
         return self
     }
     
+    func font(font:UIFont) -> Layout {
+        if self.target is UILabel {
+            (self.target as UILabel).font = font
+        } else if self.target is UITextField {
+            (self.target as UITextField).font = font
+        }
+        return self
+    }
+    
+    func systemFont(size:CGFloat) -> Layout {
+        self.font(UIFont.systemFontOfSize(size))
+        return self
+    }
+    
+    func boldSystemFont(size:CGFloat) -> Layout {
+        self.font(UIFont.boldSystemFontOfSize(size))
+        return self
+    }
+    
+    func textColor(color:UIColor) -> Layout {
+        if self.target is UILabel {
+            (self.target as UILabel).textColor = color
+        } else if self.target is UITextField {
+            (self.target as UITextField).textColor = color
+        }
+        return self
+    }
+    
+    func backgroundColor(color:UIColor) -> Layout {
+        if self.target is UILabel {
+            (self.target as UILabel).backgroundColor = color
+        } else if self.target is UITextField {
+            (self.target as UITextField).backgroundColor = color
+        }
+        return self
+    }
+}
+
+//text,label系
+extension Layout {
+    func textFieldBorderStyle(style:UITextBorderStyle) -> Layout {
+        if self.target is UITextField {
+            (self.target as UITextField).borderStyle = style
+        }
+        return self
+    }
+    
+    func keyboardType(type:UIKeyboardType) -> Layout {
+        if self.target is UITextField {
+            (self.target as UITextField).keyboardType = type
+        }
+        return self
+    }
 }
 
 //UIView生成
