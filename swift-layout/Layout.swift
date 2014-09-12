@@ -141,6 +141,11 @@ class Layout {
         self.container = container
     }
     
+    func lastConstraint(inout constraint:NSLayoutConstraint?) -> Layout {
+        constraint = self._constraint
+        return self
+        
+    }
     
     func addLayoutConstraint(constraint:NSLayoutConstraint) {
         self._constraint = constraint
@@ -414,6 +419,14 @@ extension Layout {
     
 }
 
+//UIView全般
+extension Layout {
+    func backgroundColor(color:UIColor) -> Layout {
+        self.target.backgroundColor = color
+        return self
+    }
+}
+
 //text,label系
 extension Layout {
     
@@ -423,9 +436,9 @@ extension Layout {
             let ui = self.target as UILabel
             ui.sizeToFit()
             self.width(ui.frame.size.width)
-        
+            
         }
-
+        
         return self
     }
     
@@ -484,17 +497,10 @@ extension Layout {
         return self
     }
     
-    func backgroundColor(color:UIColor) -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).backgroundColor = color
-        } else if self.target is UITextField {
-            (self.target as UITextField).backgroundColor = color
-        }
-        return self
-    }
+    
 }
 
-//text,label系
+//text系
 extension Layout {
     func textFieldBorderStyle(style:UITextBorderStyle) -> Layout {
         if self.target is UITextField {
