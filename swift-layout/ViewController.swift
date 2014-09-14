@@ -17,21 +17,12 @@ class ViewController: UIViewController {
         
         
         
-        let btn0 = Layout.createSystemTypeBtn("サンプル画面aへ")
+        let btn0 = Layout.createSystemTypeBtn("Auto Layout サンプルへ")
         self.touchBlocks.append(btn0) {
-            self.presentViewController(Sample0ViewController(), animated: true, completion: nil)
+            self.presentViewController(AutoLayoutSampleController(), animated: true, completion: nil)
         }
         Layout.regist(btn0, container: self.view)
             .left(40).fromContainerLeft()
-        
-        
-        let btn1 = Layout.createSystemTypeBtn("サンプル画面bへ")
-        self.touchBlocks.append(btn1) {
-            self.presentViewController(Sample1ViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn1, container: self.view)
-            .left(40).fromContainerLeft()
-        
         
         
         let btn2 = Layout.createSystemTypeBtn("横に等間隔（両端にスペースあり）")
@@ -39,7 +30,7 @@ class ViewController: UIViewController {
             self.presentViewController(Sample2ViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn2, container: self.view)
-            .leftIsSame(btn1)
+            .leftIsSame(btn0)
 
         
         
@@ -48,7 +39,7 @@ class ViewController: UIViewController {
             self.presentViewController(Sample3ViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn3, container: self.view)
-            .leftIsSame(btn1)
+            .leftIsSame(btn0)
         
         
         
@@ -57,7 +48,7 @@ class ViewController: UIViewController {
             self.presentViewController(Sample4ViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn4, container: self.view)
-            .leftIsSame(btn1)
+            .leftIsSame(btn0)
         
         
         
@@ -66,11 +57,11 @@ class ViewController: UIViewController {
             self.presentViewController(AgreementViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn5, container: self.view)
-            .leftIsSame(btn1)
+            .leftIsSame(btn0)
         
         
         
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn1,btn2,btn3,btn4,btn5], coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn2,btn3,btn4,btn5], coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {
