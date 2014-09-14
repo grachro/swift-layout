@@ -15,7 +15,7 @@
 		F444A1D819BAE66600B4C8C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F444A1D719BAE66600B4C8C1 /* Images.xcassets */; };
 		F444A1E419BAE66600B4C8C1 /* swift_layoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */; };
 		F45D754E19BBDBEE00C39EC9 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */; };
-		F46957EA19BB3F0E00FB675A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46957E919BB3F0E00FB675A /* Layout.swift */; };
+		F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AB519C64FF7004A9EBE /* Layout.swift */; };
 		F49079D619BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49079D519BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,7 @@
 		F444A1E219BAE66600B4C8C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_layoutTests.swift; sourceTree = "<group>"; };
 		F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
-		F46957E919BB3F0E00FB675A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		F4750AB519C64FF7004A9EBE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		F49079D519BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalEvenSpaceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +67,7 @@
 		F444A1C219BAE66600B4C8C1 = {
 			isa = PBXGroup;
 			children = (
+				F4750AB519C64FF7004A9EBE /* Layout.swift */,
 				F444A1CD19BAE66600B4C8C1 /* swift-layout */,
 				F444A1E019BAE66600B4C8C1 /* swift-layoutTests */,
 				F444A1CC19BAE66600B4C8C1 /* Products */,
@@ -86,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				F45D754F19BBDDD400C39EC9 /* sampleViewControllers */,
-				F46957E919BB3F0E00FB675A /* Layout.swift */,
 				F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */,
 				F444A1D219BAE66600B4C8C1 /* ViewController.swift */,
 				F444A1D419BAE66600B4C8C1 /* Main.storyboard */,
@@ -231,11 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */,
 				F40F38EA19BDCBEC005ED517 /* AutoLayoutSampleViewController.swift in Sources */,
 				F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */,
 				F444A1D119BAE66600B4C8C1 /* AppDelegate.swift in Sources */,
 				F41BA06319BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift in Sources */,
-				F46957EA19BB3F0E00FB675A /* Layout.swift in Sources */,
 				F45D754E19BBDBEE00C39EC9 /* AgreementViewController.swift in Sources */,
 				F49079D619BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift in Sources */,
 			);
