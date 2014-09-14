@@ -19,7 +19,7 @@ class LayoutTop {
     }
     
     func fromTop(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
@@ -29,7 +29,7 @@ class LayoutTop {
     }
     
     func fromBottom(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
@@ -47,13 +47,13 @@ class LayoutBottom {
     }
     
     func fromTop(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: -self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromBottom(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: -self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
@@ -76,13 +76,13 @@ class LayoutLeft {
     
     
     func fromLeft(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromRight(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
@@ -102,13 +102,13 @@ class LayoutRight {
     }
     
     func fromLeft(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: -self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
     func fromRight(base:UIView) -> Layout{
-        let l =  NSLayoutConstraint(item: self._layout.target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: -self._size)
+        let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Right, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
@@ -132,12 +132,12 @@ class Layout {
         return layout
     }
     
-    private let target:UIView
+    private let _target:UIView
     private let container:UIView
     private var _constraint:NSLayoutConstraint? = nil
     
     private init(view:UIView, container:UIView) {
-        self.target = view
+        self._target = view
         self.container = container
     }
     
@@ -201,50 +201,50 @@ class Layout {
     }
     
     func width(size:CGFloat) -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
         self.addLayoutConstraint(l)
         return self
     }
     
     func widthIsSame(base:UIView) -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .Width, relatedBy: .Equal, toItem: base, attribute: .Width, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .Width, relatedBy: .Equal, toItem: base, attribute: .Width, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     func height(size:CGFloat) -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
         self.addLayoutConstraint(l)
         return self
     }
     
     func heightIsSame(base:UIView) -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .Height, relatedBy: .Equal, toItem: base, attribute: .Height, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .Height, relatedBy: .Equal, toItem: base, attribute: .Height, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     func horizontalCenterIsSame(base:UIView) -> Layout {
-        let l =  NSLayoutConstraint(item: base, attribute: .CenterX, relatedBy: .Equal, toItem: self.target, attribute: .CenterX, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: base, attribute: .CenterX, relatedBy: .Equal, toItem: self._target, attribute: .CenterX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     func verticalCenterIsSame(base:UIView) -> Layout {
-        let l =  NSLayoutConstraint(item: base, attribute: .CenterY, relatedBy: .Equal, toItem: self.target, attribute: .CenterY, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: base, attribute: .CenterY, relatedBy: .Equal, toItem: self._target, attribute: .CenterY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     
     func horizontalCenterInContainer() -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .CenterX, relatedBy: .Equal, toItem: self.container, attribute: .CenterX, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterX, relatedBy: .Equal, toItem: self.container, attribute: .CenterX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     func verticalCenterInContainer() -> Layout {
-        let l =  NSLayoutConstraint(item: self.target, attribute: .CenterY, relatedBy: .Equal, toItem: self.container, attribute: .CenterY, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterY, relatedBy: .Equal, toItem: self.container, attribute: .CenterY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
@@ -422,9 +422,16 @@ extension Layout {
 //UIView全般
 extension Layout {
     func backgroundColor(color:UIColor) -> Layout {
-        self.target.backgroundColor = color
+        self._target.backgroundColor = color
         return self
     }
+    
+    func backgroundColorAlpha(alpha:CGFloat)-> Layout {
+        self._target.backgroundColor = self._target.backgroundColor?.colorWithAlphaComponent(alpha)
+        return self
+    }
+    
+    
 }
 
 //text,label系
@@ -432,8 +439,8 @@ extension Layout {
     
     func fitWidthFromText() -> Layout {
         
-        if self.target is UILabel {
-            let ui = self.target as UILabel
+        if self._target is UILabel {
+            let ui = self._target as UILabel
             ui.sizeToFit()
             self.width(ui.frame.size.width)
             
@@ -443,37 +450,37 @@ extension Layout {
     }
     
     func textAlignmentIsLeft() -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).textAlignment = .Left
-        } else if self.target is UITextField {
-            (self.target as UITextField).textAlignment = .Left
+        if self._target is UILabel {
+            (self._target as UILabel).textAlignment = .Left
+        } else if self._target is UITextField {
+            (self._target as UITextField).textAlignment = .Left
         }
         return self
     }
     
     func textAlignmentIsCenter() -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).textAlignment = .Center
-        } else if self.target is UITextField {
-            (self.target as UITextField).textAlignment = .Center
+        if self._target is UILabel {
+            (self._target as UILabel).textAlignment = .Center
+        } else if self._target is UITextField {
+            (self._target as UITextField).textAlignment = .Center
         }
         return self
     }
     
     func textAlignmentIsRight() -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).textAlignment = .Right
-        } else if self.target is UITextField {
-            (self.target as UITextField).textAlignment = .Right
+        if self._target is UILabel {
+            (self._target as UILabel).textAlignment = .Right
+        } else if self._target is UITextField {
+            (self._target as UITextField).textAlignment = .Right
         }
         return self
     }
     
     func font(font:UIFont) -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).font = font
-        } else if self.target is UITextField {
-            (self.target as UITextField).font = font
+        if self._target is UILabel {
+            (self._target as UILabel).font = font
+        } else if self._target is UITextField {
+            (self._target as UITextField).font = font
         }
         return self
     }
@@ -489,10 +496,12 @@ extension Layout {
     }
     
     func textColor(color:UIColor) -> Layout {
-        if self.target is UILabel {
-            (self.target as UILabel).textColor = color
-        } else if self.target is UITextField {
-            (self.target as UITextField).textColor = color
+        if self._target is UILabel {
+            (self._target as UILabel).textColor = color
+        } else if self._target is UITextField {
+            (self._target as UITextField).textColor = color
+        } else if self._target is UIButton {
+            (self._target as UIButton).setTitleColor(color, forState: .Normal)
         }
         return self
     }
@@ -503,15 +512,15 @@ extension Layout {
 //text系
 extension Layout {
     func textFieldBorderStyle(style:UITextBorderStyle) -> Layout {
-        if self.target is UITextField {
-            (self.target as UITextField).borderStyle = style
+        if self._target is UITextField {
+            (self._target as UITextField).borderStyle = style
         }
         return self
     }
     
     func keyboardType(type:UIKeyboardType) -> Layout {
-        if self.target is UITextField {
-            (self.target as UITextField).keyboardType = type
+        if self._target is UITextField {
+            (self._target as UITextField).keyboardType = type
         }
         return self
     }
