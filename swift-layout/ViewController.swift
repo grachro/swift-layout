@@ -14,44 +14,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        let btn0 = Layout.createSystemTypeBtn("Auto Layout サンプルへ")
-        self.touchBlocks.append(btn0) {
-            self.presentViewController(AutoLayoutSampleController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn0, container: self.view)
-            .left(40).fromContainerLeft()
-        
-        
-        let btn2 = Layout.createSystemTypeBtn("横に等間隔 サンプルへ")
-        self.touchBlocks.append(btn2) {
-            self.presentViewController(HorizontalEvenSpaceViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn2, container: self.view)
-            .leftIsSame(btn0)
 
         
-        let btn4 = Layout.createSystemTypeBtn("縦に等間隔 サンプルへ")
-        self.touchBlocks.append(btn4) {
-            self.presentViewController(VerticalEvenSpaceViewController(), animated: true, completion: nil)
+        let sampleControllers:[(btn:UIButton, controller:UIViewController)] = [
+            (Layout.createSystemTypeBtn("Auto Layout サンプルへ"), AutoLayoutSampleController()),
+            (Layout.createSystemTypeBtn("横に等間隔 サンプルへ"), HorizontalEvenSpaceViewController()),
+            (Layout.createSystemTypeBtn("縦に等間隔 サンプルへ"), VerticalEvenSpaceViewController()),
+            (Layout.createSystemTypeBtn("条文形式画面へ"), AgreementViewController()),
+            (Layout.createSystemTypeBtn("引っ張る1"), PullToRefresh1SampleViewController()),
+            (Layout.createSystemTypeBtn("引っ張る2"), PullToRefresh2SampleViewController()),
+
+        ]
+        
+        
+        for t in sampleControllers {
+            self.touchBlocks.append(t.btn) {
+                self.presentViewController(t.controller, animated: true, completion: nil)
+            }
+            Layout.regist(t.btn, container: self.view)
+                .left(40).fromContainerLeft()
         }
-        Layout.regist(btn4, container: self.view)
-            .leftIsSame(btn0)
         
-        
-        
-        let btn5 = Layout.createSystemTypeBtn("条文形式画面へ")
-        self.touchBlocks.append(btn5) {
-            self.presentViewController(AgreementViewController(), animated: true, completion: nil)
+        let btns = sampleControllers.reduce([]){(var u, var t) -> [UIButton] in
+            u.append(t.btn)
+            return u
         }
-        Layout.regist(btn5, container: self.view)
-            .leftIsSame(btn0)
         
-        
-        
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn2 ,btn4,btn5], coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: btns, coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {

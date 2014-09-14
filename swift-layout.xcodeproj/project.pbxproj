@@ -19,6 +19,8 @@
 		F4750AC219C657E3004A9EBE /* AutoLayoutSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */; };
 		F4750AC319C657E3004A9EBE /* HorizontalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */; };
 		F4750AC419C657E3004A9EBE /* VerticalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */; };
+		F4750AC619C6598F004A9EBE /* PullToRefresh1SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */; };
+		F4750AC819C6599A004A9EBE /* PullToRefresh2SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSampleViewController.swift; sourceTree = "<group>"; };
 		F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalEvenSpaceViewController.swift; sourceTree = "<group>"; };
 		F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalEvenSpaceViewController.swift; sourceTree = "<group>"; };
+		F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh1SampleViewController.swift; sourceTree = "<group>"; };
+		F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh2SampleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 				F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */,
 				F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */,
 				F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */,
+				F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */,
+				F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */,
 			);
 			path = sampleViewControllers;
 			sourceTree = "<group>";
@@ -246,9 +252,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4750AC119C657E3004A9EBE /* AgreementViewController.swift in Sources */,
+				F4750AC819C6599A004A9EBE /* PullToRefresh2SampleViewController.swift in Sources */,
 				F4750AC219C657E3004A9EBE /* AutoLayoutSampleViewController.swift in Sources */,
 				F4750AC319C657E3004A9EBE /* HorizontalEvenSpaceViewController.swift in Sources */,
 				F4750AC419C657E3004A9EBE /* VerticalEvenSpaceViewController.swift in Sources */,
+				F4750AC619C6598F004A9EBE /* PullToRefresh1SampleViewController.swift in Sources */,
 				F4750AB919C65395004A9EBE /* AutolayoutPullArea.swift in Sources */,
 				F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */,
 				F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */,
