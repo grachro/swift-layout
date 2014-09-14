@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         let btn4 = Layout.createSystemTypeBtn("縦に等間隔 サンプルへ")
         self.touchBlocks.append(btn4) {
-            self.presentViewController(Sample4ViewController(), animated: true, completion: nil)
+            self.presentViewController(VerticalEvenSpaceViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn4, container: self.view)
             .leftIsSame(btn0)

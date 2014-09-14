@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F40F38EA19BDCBEC005ED517 /* AutoLayoutSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F38E919BDCBEB005ED517 /* AutoLayoutSampleViewController.swift */; };
-		F41BA06119BC82F500A0697A /* Sample3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BA06019BC82F500A0697A /* Sample3ViewController.swift */; };
-		F41BA06319BC8DDA00A0697A /* Sample4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */; };
+		F41BA06319BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BA06219BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift */; };
 		F444A1D119BAE66600B4C8C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */; };
 		F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1D219BAE66600B4C8C1 /* ViewController.swift */; };
 		F444A1D619BAE66600B4C8C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F444A1D419BAE66600B4C8C1 /* Main.storyboard */; };
@@ -32,8 +31,7 @@
 
 /* Begin PBXFileReference section */
 		F40F38E919BDCBEB005ED517 /* AutoLayoutSampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutSampleViewController.swift; sourceTree = "<group>"; };
-		F41BA06019BC82F500A0697A /* Sample3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample3ViewController.swift; sourceTree = "<group>"; };
-		F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample4ViewController.swift; sourceTree = "<group>"; };
+		F41BA06219BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalEvenSpaceViewController.swift; sourceTree = "<group>"; };
 		F444A1CB19BAE66600B4C8C1 /* swift-layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F444A1CF19BAE66600B4C8C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,8 +127,7 @@
 				F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */,
 				F40F38E919BDCBEB005ED517 /* AutoLayoutSampleViewController.swift */,
 				F49079D519BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift */,
-				F41BA06019BC82F500A0697A /* Sample3ViewController.swift */,
-				F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */,
+				F41BA06219BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift */,
 			);
 			name = sampleViewControllers;
 			sourceTree = "<group>";
@@ -237,8 +234,7 @@
 				F40F38EA19BDCBEC005ED517 /* AutoLayoutSampleViewController.swift in Sources */,
 				F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */,
 				F444A1D119BAE66600B4C8C1 /* AppDelegate.swift in Sources */,
-				F41BA06319BC8DDA00A0697A /* Sample4ViewController.swift in Sources */,
-				F41BA06119BC82F500A0697A /* Sample3ViewController.swift in Sources */,
+				F41BA06319BC8DDA00A0697A /* VerticalEvenSpaceViewController.swift in Sources */,
 				F46957EA19BB3F0E00FB675A /* Layout.swift in Sources */,
 				F45D754E19BBDBEE00C39EC9 /* AgreementViewController.swift in Sources */,
 				F49079D619BC0A4B007668D5 /* HorizontalEvenSpaceViewController.swift in Sources */,

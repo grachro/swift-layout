@@ -1,5 +1,5 @@
 //
-//  Sample3ViewController.swift
+//  VerticalEvenSpaceViewController.swift
 //  swift-layout
 //
 //  Created by grachro on 2014/09/07.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class Sample3ViewController: UIViewController {
+class VerticalEvenSpaceViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,36 +23,31 @@ class Sample3ViewController: UIViewController {
         addReturnBtn()
     }
     
-
     
     func threeItems() {
         var l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, container: self.view)
-            .top(30).fromContainerTop()
+            .left(50).fromContainerLeft()
             .width(30)
-            .height(50)
         
         var l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.regist(l2, container: self.view)
-            .verticalCenterIsSame(l1)
+            .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
-            .height(60)
         
         
         var l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.regist(l3, container: self.view)
-            .verticalCenterIsSame(l1)
+            .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
-            .height(60)
         
-
-        Layout.horizontalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3], coverSpace: false)
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3], coverSpace: true)
     }
     
     func fourItems() {
@@ -61,42 +55,38 @@ class Sample3ViewController: UIViewController {
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, container: self.view)
-            .bottom(30).fromContainerBottom()
+            .right(50).fromContainerRight()
             .width(30)
-            .height(50)
         
         var l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.regist(l2, container: self.view)
-            .verticalCenterIsSame(l1)
+            .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
-            .height(60)
         
         
         var l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.regist(l3, container: self.view)
-            .verticalCenterIsSame(l1)
+            .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
-            .height(60)
         
         
         var l4 = UILabel()
         l4.text = "l4"
         l4.backgroundColor = UIColor.yellowColor()
         Layout.regist(l4, container: self.view)
-            .verticalCenterIsSame(l1)
+            .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
-            .height(60)
         
-        Layout.horizontalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3,l4], coverSpace: false)
-        
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3,l4], coverSpace: false)
     }
     
     var touchBlocks = TouchBlocks()
     private func addReturnBtn() {
+        
         let btn = Layout.createSystemTypeBtn("return")
         Layout.regist(btn, container: self.view)
             .bottomIsSameContainer()
@@ -110,5 +100,4 @@ class Sample3ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }
