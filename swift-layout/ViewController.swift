@@ -25,25 +25,15 @@ class ViewController: UIViewController {
             .left(40).fromContainerLeft()
         
         
-        let btn2 = Layout.createSystemTypeBtn("横に等間隔（両端にスペースあり）")
+        let btn2 = Layout.createSystemTypeBtn("横に等間隔 サンプルへ")
         self.touchBlocks.append(btn2) {
-            self.presentViewController(Sample2ViewController(), animated: true, completion: nil)
+            self.presentViewController(HorizontalEvenSpaceViewController(), animated: true, completion: nil)
         }
         Layout.regist(btn2, container: self.view)
             .leftIsSame(btn0)
 
         
-        
-        let btn3 = Layout.createSystemTypeBtn("横に等間隔（両端にスペースなし）")
-        self.touchBlocks.append(btn3) {
-            self.presentViewController(Sample3ViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn3, container: self.view)
-            .leftIsSame(btn0)
-        
-        
-        
-        let btn4 = Layout.createSystemTypeBtn("縦に等間隔")
+        let btn4 = Layout.createSystemTypeBtn("縦に等間隔 サンプルへ")
         self.touchBlocks.append(btn4) {
             self.presentViewController(Sample4ViewController(), animated: true, completion: nil)
         }
@@ -61,7 +51,7 @@ class ViewController: UIViewController {
         
         
         
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn2,btn3,btn4,btn5], coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn2 ,btn4,btn5], coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {
