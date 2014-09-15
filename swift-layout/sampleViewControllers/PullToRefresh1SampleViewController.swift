@@ -116,14 +116,20 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
 
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return 20
     }
     
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.row)行目"
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "下に引っ張る"
+        } else {
+            cell.textLabel?.text = ""
+        }
+        
         return cell
     }
     

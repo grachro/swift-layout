@@ -30,7 +30,8 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .verticalCenterInContainer()
         
         
-        let pullAreaBar = UIView()
+        let pullAreaBar = UILabel()
+        pullAreaBar.text = "下に引っ張る"
         Layout.regist(pullAreaBar, container: autolayoutPullArea.view)
             .rightIsSameContainer()
             .leftIsSameContainer()
@@ -86,7 +87,8 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .topIsSameContainer()
             .height(50)
             .backgroundColor(UIColor(red:0.86, green:0.87, blue:0.87, alpha:1.0))
-        
+
+
         let footer = Layout.createSystemTypeBtn("return")
         Layout.regist(footer, container: self.view)
             .leftIsSameContainer()
@@ -95,9 +97,8 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .height(50)
             .backgroundColor(UIColor(red:0.86, green:0.87, blue:0.87, alpha:1.0))
             .textColor(UIColor.blackColor())
-        
-        
-        
+ 
+
         Layout.regist(tableView, container: self.view)
             .leftIsSameContainer()
             .rightIsSameContainer()
@@ -126,7 +127,6 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
     //UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.row)行目"
         return cell
     }
     
