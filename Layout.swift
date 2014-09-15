@@ -559,7 +559,19 @@ extension Layout {
         lbl.lineBreakMode = NSLineBreakMode.ByCharWrapping
         return lbl
     }
+
+    class func createExtraLightBlurEffect() -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+    }
     
+    class func createLightBlurEffect() -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+    }
+
+    class func createDarkBlurEffect() -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+    }
+
 }
 
 //touchイベントの登録にブロックを渡せるようにする

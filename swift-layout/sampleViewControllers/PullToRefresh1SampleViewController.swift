@@ -19,7 +19,14 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         let maxHeight100:CGFloat = 100
         let autolayoutPullArea = AutolayoutPullArea(minHeight:0,maxHeight:maxHeight100,superview: self.tableView)
         autolayoutPullArea.layout
-            .backgroundColor(UIColor(red:1.00,green:0.98,blue:0.80,alpha:1.0))
+            //.backgroundColor(UIColor(red:1.00,green:0.98,blue:0.80,alpha:1.0))
+        
+
+        Layout.regist(effectView, superview: autolayoutPullArea.view)
+            .rightIsSameSuperview()
+            .leftIsSameSuperview()
+            .topIsSameSuperview()
+            .bottomIsSameSuperview()
         
         let text = UILabel()
         Layout.regist(text, superview: autolayoutPullArea.view)
