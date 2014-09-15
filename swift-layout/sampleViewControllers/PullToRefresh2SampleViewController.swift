@@ -26,17 +26,17 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
         let text = UILabel()
         Layout.regist(text, superview: autolayoutPullArea.view)
             .text("中央")
-            .horizontalCenterInContainer()
-            .verticalCenterInContainer()
+            .horizontalCenterInSuperview()
+            .verticalCenterInSuperview()
         
         
         let pullAreaBar = UILabel()
         Layout.regist(pullAreaBar, superview: autolayoutPullArea.view)
             .text("下に引っ張る")
-            .rightIsSameContainer()
-            .leftIsSameContainer()
+            .rightIsSameSuperview()
+            .leftIsSameSuperview()
             .height(minHeight20)
-            .bottomIsSameContainer()
+            .bottomIsSameSuperview()
             .backgroundColor(UIColor(red:0.44, green:0.35, blue:0.64, alpha:1.0))
         
         var bar1HeightConstraint:NSLayoutConstraint?
@@ -44,7 +44,7 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .width(50)
             .bottom(0).fromTop(pullAreaBar)
             .height(70).lastConstraint(&bar1HeightConstraint)
-            .left(40).fromContainerLeft()
+            .left(40).fromSuperviewLeft()
             .backgroundColor(UIColor(red:0.48, green:1.00, blue:0.74, alpha:0.4))
         
         var bar2HeightConstraint:NSLayoutConstraint?
@@ -52,7 +52,7 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .width(50)
             .bottom(0).fromTop(pullAreaBar)
             .height(50).lastConstraint(&bar2HeightConstraint)
-            .right(40).fromContainerRight()
+            .right(40).fromSuperviewRight()
             .backgroundColor(UIColor(red:0.48, green:1.00, blue:0.74, alpha:0.4))
         
         
@@ -82,26 +82,26 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
         
         let header = UIView()
         Layout.regist(header, superview: self.view)
-            .leftIsSameContainer()
-            .rightIsSameContainer()
-            .topIsSameContainer()
+            .leftIsSameSuperview()
+            .rightIsSameSuperview()
+            .topIsSameSuperview()
             .height(50)
             .backgroundColor(UIColor(red:0.86, green:0.87, blue:0.87, alpha:1.0))
 
 
         let footer = Layout.createSystemTypeBtn("return")
         Layout.regist(footer, superview: self.view)
-            .leftIsSameContainer()
-            .rightIsSameContainer()
-            .bottomIsSameContainer()
+            .leftIsSameSuperview()
+            .rightIsSameSuperview()
+            .bottomIsSameSuperview()
             .height(50)
             .backgroundColor(UIColor(red:0.86, green:0.87, blue:0.87, alpha:1.0))
             .textColor(UIColor.blackColor())
  
 
         Layout.regist(tableView, superview: self.view)
-            .leftIsSameContainer()
-            .rightIsSameContainer()
+            .leftIsSameSuperview()
+            .rightIsSameSuperview()
             .top(0).fromBottom(header)
             .bottom(0).fromTop(footer)
             .backgroundColor(UIColor.lightGrayColor())

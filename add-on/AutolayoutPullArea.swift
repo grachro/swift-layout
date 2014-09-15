@@ -31,10 +31,10 @@ class AutolayoutPullArea:ScrollViewPullArea {
         self._maxHeight = maxHeight
         
         _layout = Layout.regist(view, superview: superview)
-            .horizontalCenterInContainer()
-            .leftIsSameContainer()
-            .rightIsSameContainer()
-            .top(-self._maxHeight).fromContainerTop().lastConstraint(&topConstraint)
+            .horizontalCenterInSuperview()
+            .leftIsSameSuperview()
+            .rightIsSameSuperview()
+            .top(-self._maxHeight).fromSuperviewTop().lastConstraint(&topConstraint)
             .height(self._maxHeight).lastConstraint(&headerConstraint)
         
     }

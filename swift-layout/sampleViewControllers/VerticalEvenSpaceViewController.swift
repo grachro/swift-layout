@@ -29,7 +29,7 @@ class VerticalEvenSpaceViewController: UIViewController {
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, superview: self.view)
-            .left(50).fromContainerLeft()
+            .left(50).fromSuperviewLeft()
             .width(30)
         
         var l2 = UILabel()
@@ -55,7 +55,7 @@ class VerticalEvenSpaceViewController: UIViewController {
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, superview: self.view)
-            .right(50).fromContainerRight()
+            .right(50).fromSuperviewRight()
             .width(30)
         
         var l2 = UILabel()
@@ -89,8 +89,8 @@ class VerticalEvenSpaceViewController: UIViewController {
         
         let btn = Layout.createSystemTypeBtn("return")
         Layout.regist(btn, superview: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
         touchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)
         }

@@ -24,7 +24,7 @@ class LayoutTop {
         return self._layout
     }
     
-    func fromContainerTop() -> Layout{
+    func fromSuperviewTop() -> Layout{
         return fromTop(self._layout.superview)
     }
     
@@ -58,7 +58,7 @@ class LayoutBottom {
         return self._layout
     }
     
-    func fromContainerBottom() -> Layout{
+    func fromSuperviewBottom() -> Layout{
         return fromBottom(self._layout.superview)
     }
     
@@ -87,7 +87,7 @@ class LayoutLeft {
         return self._layout
     }
     
-    func fromContainerLeft() -> Layout {
+    func fromSuperviewLeft() -> Layout {
         return fromLeft(self._layout.superview)
     }
 }
@@ -113,7 +113,7 @@ class LayoutRight {
         return self._layout
     }
     
-    func fromContainerRight() -> Layout{
+    func fromSuperviewRight() -> Layout{
         return fromRight(self._layout.superview)
     }
 }
@@ -160,7 +160,7 @@ class Layout {
         return LayoutTop(layout: self, size: 0).fromTop(base)
     }
     
-    func topIsSameContainer() -> Layout {
+    func topIsSameSuperview() -> Layout {
         return topIsSame(self.superview)
     }
     
@@ -172,7 +172,7 @@ class Layout {
         return LayoutBottom(layout: self, size: 0).fromBottom(base)
     }
     
-    func bottomIsSameContainer() -> Layout {
+    func bottomIsSameSuperview() -> Layout {
         return bottomIsSame(self.superview)
     }
     
@@ -184,7 +184,7 @@ class Layout {
         return LayoutLeft(layout: self, size: 0).fromLeft(base)
     }
     
-    func leftIsSameContainer() -> Layout {
+    func leftIsSameSuperview() -> Layout {
         return leftIsSame(self.superview)
     }
     
@@ -196,7 +196,7 @@ class Layout {
         return LayoutRight(layout: self, size: 0).fromRight(base)
     }
     
-    func rightIsSameContainer() -> Layout {
+    func rightIsSameSuperview() -> Layout {
         return rightIsSame(self.superview)
     }
     
@@ -237,13 +237,13 @@ class Layout {
     }
     
     
-    func horizontalCenterInContainer() -> Layout {
+    func horizontalCenterInSuperview() -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .CenterX, relatedBy: .Equal, toItem: self.superview, attribute: .CenterX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
-    func verticalCenterInContainer() -> Layout {
+    func verticalCenterInSuperview() -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .CenterY, relatedBy: .Equal, toItem: self.superview, attribute: .CenterY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self

@@ -32,7 +32,7 @@ class ViewController: UIViewController {
                 self.presentViewController(t.controller, animated: true, completion: nil)
             }
             Layout.regist(t.btn, superview: self.view)
-                .left(40).fromContainerLeft()
+                .left(40).fromSuperviewLeft()
         }
         
         let btns = sampleControllers.reduce([]){(var u, var t) -> [UIButton] in

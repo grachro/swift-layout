@@ -30,7 +30,7 @@ class AgreementViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
 
         let prefix = "・"
-        var containerView = self.view
+        var superviewView = self.view
         var baseView:UIView? = nil
         
         for (index, text) in enumerate(texts) {
@@ -39,25 +39,25 @@ class AgreementViewController: UIViewController {
             var prefixLabel = Layout.createWordWrappingLabel(prefix)
 
             var bodyLabel = Layout.createWordWrappingLabel(text)
-            let bodyLayout = Layout.regist(bodyLabel, superview:containerView)
+            let bodyLayout = Layout.regist(bodyLabel, superview:superviewView)
                 .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
             
-            Layout.regist(prefixLabel, superview: containerView)
+            Layout.regist(prefixLabel, superview: superviewView)
                 .topIsSame(bodyLabel) //Topは本文と同じ
-                .left(15).fromContainerLeft()
+                .left(15).fromSuperviewLeft()
                 .backgroundColor(UIColor.redColor())
             
             if baseView == nil {
                 Layout.more(bodyLabel)
-                    .top(20).fromContainerTop() //1行目のTopはコンテナのTopからの距離
+                    .top(20).fromSuperviewTop() //1行目のTopはコンテナのTopからの距離
                     .left(15).fromLeft(prefixLabel)
-                    .right(15).fromContainerRight()
+                    .right(15).fromSuperviewRight()
             } else {
                 Layout.more(bodyLabel)
                     .top(20).fromBottom(baseView!) //2行目以降のTopは前の行のBottomからの距離
                     .left(15).fromLeft(prefixLabel)
-                    .right(15).fromContainerRight()
+                    .right(15).fromSuperviewRight()
             }
             
             baseView = bodyLabel
@@ -73,8 +73,8 @@ class AgreementViewController: UIViewController {
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.regist(btn, superview: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
         
         touchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)

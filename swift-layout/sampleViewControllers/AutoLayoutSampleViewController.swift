@@ -33,8 +33,8 @@ class AutoLayoutSampleController: UIViewController {
         let 中央 = UILabel()
         中央.text = "中央"
         Layout.regist(中央, superview: self.view)
-            .horizontalCenterInContainer()
-            .verticalCenterInContainer()
+            .horizontalCenterInSuperview()
+            .verticalCenterInSuperview()
             .backgroundColor(color)
         
         
@@ -82,32 +82,32 @@ class AutoLayoutSampleController: UIViewController {
         let 左上40 = UILabel()
         左上40.text = "40"
         Layout.regist(左上40, superview: self.view)
-            .top(d).fromContainerTop()
-            .left(d).fromContainerLeft()
+            .top(d).fromSuperviewTop()
+            .left(d).fromSuperviewLeft()
             .backgroundColor(color)
 
         
         let 右上40 = UILabel()
         右上40.text = "40"
         Layout.regist(右上40, superview: self.view)
-            .top(d).fromContainerTop()
-            .right(d).fromContainerRight()
+            .top(d).fromSuperviewTop()
+            .right(d).fromSuperviewRight()
             .backgroundColor(color)
 
         
         let 左下40 = UILabel()
         左下40.text = "40"
         Layout.regist(左下40, superview: self.view)
-            .bottom(d).fromContainerBottom()
-            .left(d).fromContainerLeft()
+            .bottom(d).fromSuperviewBottom()
+            .left(d).fromSuperviewLeft()
             .backgroundColor(color)
 
         
         let 右下40 = UILabel()
         右下40.text = "40"
         Layout.regist(右下40, superview: self.view)
-            .bottom(d).fromContainerBottom()
-            .right(d).fromContainerRight()
+            .bottom(d).fromSuperviewBottom()
+            .right(d).fromSuperviewRight()
             .backgroundColor(color)
 
 
@@ -153,32 +153,32 @@ class AutoLayoutSampleController: UIViewController {
         let lbl左上 = UILabel()
         lbl左上.text = "左上"
         Layout.regist(lbl左上, superview: self.view)
-            .topIsSameContainer()
-            .leftIsSameContainer()
+            .topIsSameSuperview()
+            .leftIsSameSuperview()
             .backgroundColor(color)
         
         
         let lbl右上 = UILabel()
         lbl右上.text = "右上"
         Layout.regist(lbl右上, superview: self.view)
-            .topIsSameContainer()
-            .rightIsSameContainer()
+            .topIsSameSuperview()
+            .rightIsSameSuperview()
             .backgroundColor(color)
         
         
         let lbl左下 = UILabel()
         lbl左下.text = "左下"
         Layout.regist(lbl左下, superview: self.view)
-            .bottomIsSameContainer()
-            .leftIsSameContainer()
+            .bottomIsSameSuperview()
+            .leftIsSameSuperview()
             .backgroundColor(color)
         
         
         let lbl右下 = UILabel()
         lbl右下.text = "右下"
         Layout.regist(lbl右下, superview: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
             .backgroundColor(color)
         
         
@@ -223,8 +223,8 @@ class AutoLayoutSampleController: UIViewController {
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.regist(btn, superview: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
         touchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)
         }

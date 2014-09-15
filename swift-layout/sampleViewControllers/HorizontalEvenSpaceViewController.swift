@@ -28,7 +28,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, superview: self.view)
-            .top(30).fromContainerTop()
+            .top(30).fromSuperviewTop()
             .width(30)
             .height(50)
         
@@ -57,7 +57,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.regist(l1, superview: self.view)
-            .bottom(30).fromContainerBottom()
+            .bottom(30).fromSuperviewBottom()
             .width(30)
             .height(50)
         
@@ -87,8 +87,8 @@ class HorizontalEvenSpaceViewController: UIViewController {
         
         let btn = Layout.createSystemTypeBtn("return")
         Layout.regist(btn, superview: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
         touchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)
         }
