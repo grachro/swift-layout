@@ -22,14 +22,14 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .backgroundColor(UIColor(red:1.00,green:0.98,blue:0.80,alpha:1.0))
         
         let text = UILabel()
-        Layout.regist(text, container: autolayoutPullArea.view)
+        Layout.regist(text, superview: autolayoutPullArea.view)
             .text("中央")
             .horizontalCenterInContainer()
             .verticalCenterInContainer()
         
         var topBarConstraint:NSLayoutConstraint?
         let topBar = UIView()
-        Layout.regist(topBar, container: autolayoutPullArea.view)
+        Layout.regist(topBar, superview: autolayoutPullArea.view)
             .rightIsSameContainer()
             .leftIsSameContainer()
             .height(20).lastConstraint(&topBarConstraint)
@@ -39,7 +39,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         var bar1HeightConstraint:NSLayoutConstraint?
         let bar1 = UIView()
-        Layout.regist(bar1, container: autolayoutPullArea.view)
+        Layout.regist(bar1, superview: autolayoutPullArea.view)
             .width(50)
             .bottomIsSameContainer()
             .height(70).lastConstraint(&bar1HeightConstraint)
@@ -48,7 +48,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         var bar2HeightConstraint:NSLayoutConstraint?
         let bar2 = UIView()
-        Layout.regist(bar2, container: autolayoutPullArea.view)
+        Layout.regist(bar2, superview: autolayoutPullArea.view)
             .width(50)
             .bottomIsSameContainer()
             .height(50).lastConstraint(&bar2HeightConstraint)
@@ -79,7 +79,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
     func createBaseView() {
         
         let header = UIView()
-        Layout.regist(header, container: self.view)
+        Layout.regist(header, superview: self.view)
             .leftIsSameContainer()
             .rightIsSameContainer()
             .topIsSameContainer()
@@ -87,7 +87,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .backgroundColor(UIColor(red:0.94,green:0.50,blue:0.50,alpha:1.0))
         
         let footer = Layout.createSystemTypeBtn("return")
-        Layout.regist(footer, container: self.view)
+        Layout.regist(footer, superview: self.view)
             .leftIsSameContainer()
             .rightIsSameContainer()
             .bottomIsSameContainer()
@@ -95,7 +95,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .backgroundColor(UIColor(red:0.94,green:0.50,blue:0.50,alpha:1.0))
             .textColor(UIColor.whiteColor())
         
-        Layout.regist(tableView, container: self.view)
+        Layout.regist(tableView, superview: self.view)
             .leftIsSameContainer()
             .rightIsSameContainer()
             .top(0).fromBottom(header)

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             self.touchBlocks.append(t.btn) {
                 self.presentViewController(t.controller, animated: true, completion: nil)
             }
-            Layout.regist(t.btn, container: self.view)
+            Layout.regist(t.btn, superview: self.view)
                 .left(40).fromContainerLeft()
         }
         
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             return u
         }
         
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: btns, coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(superview: self.view, views: btns, coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {

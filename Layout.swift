@@ -25,7 +25,7 @@ class LayoutTop {
     }
     
     func fromContainerTop() -> Layout{
-        return fromTop(self._layout.container)
+        return fromTop(self._layout.superview)
     }
     
     func fromBottom(base:UIView) -> Layout{
@@ -59,7 +59,7 @@ class LayoutBottom {
     }
     
     func fromContainerBottom() -> Layout{
-        return fromBottom(self._layout.container)
+        return fromBottom(self._layout.superview)
     }
     
 }
@@ -88,7 +88,7 @@ class LayoutLeft {
     }
     
     func fromContainerLeft() -> Layout {
-        return fromLeft(self._layout.container)
+        return fromLeft(self._layout.superview)
     }
 }
 
@@ -114,7 +114,7 @@ class LayoutRight {
     }
     
     func fromContainerRight() -> Layout{
-        return fromRight(self._layout.container)
+        return fromRight(self._layout.superview)
     }
 }
 
@@ -122,23 +122,23 @@ class LayoutRight {
 class Layout {
     
     class func more(view:UIView) -> Layout {
-        return Layout(view: view, container: view.superview!)
+        return Layout(view: view, superview: view.superview!)
     }
 
-    class func regist(view:UIView, container:UIView) -> Layout {
-        let layout = Layout(view: view, container: container)
+    class func regist(view:UIView, superview:UIView) -> Layout {
+        let layout = Layout(view: view, superview: superview)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        container.addSubview(view)
+        superview.addSubview(view)
         return layout
     }
     
     private let _target:UIView
-    private let container:UIView
+    private let superview:UIView
     private var _constraint:NSLayoutConstraint? = nil
     
-    private init(view:UIView, container:UIView) {
+    private init(view:UIView, superview:UIView) {
         self._target = view
-        self.container = container
+        self.superview = superview
     }
     
     func lastConstraint(inout constraint:NSLayoutConstraint?) -> Layout {
@@ -149,7 +149,7 @@ class Layout {
     
     func addLayoutConstraint(constraint:NSLayoutConstraint) {
         self._constraint = constraint
-        self.container.addConstraint(constraint)
+        self.superview.addConstraint(constraint)
     }
     
     func top(size:CGFloat) -> LayoutTop {
@@ -161,7 +161,7 @@ class Layout {
     }
     
     func topIsSameContainer() -> Layout {
-        return topIsSame(self.container)
+        return topIsSame(self.superview)
     }
     
     func bottom(size:CGFloat) -> LayoutBottom {
@@ -173,7 +173,7 @@ class Layout {
     }
     
     func bottomIsSameContainer() -> Layout {
-        return bottomIsSame(self.container)
+        return bottomIsSame(self.superview)
     }
     
     func left(size:CGFloat) -> LayoutLeft {
@@ -185,7 +185,7 @@ class Layout {
     }
     
     func leftIsSameContainer() -> Layout {
-        return leftIsSame(self.container)
+        return leftIsSame(self.superview)
     }
     
     func right(size:CGFloat) -> LayoutRight {
@@ -197,7 +197,7 @@ class Layout {
     }
     
     func rightIsSameContainer() -> Layout {
-        return rightIsSame(self.container)
+        return rightIsSame(self.superview)
     }
     
     func width(size:CGFloat) -> Layout {
@@ -238,13 +238,13 @@ class Layout {
     
     
     func horizontalCenterInContainer() -> Layout {
-        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterX, relatedBy: .Equal, toItem: self.container, attribute: .CenterX, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterX, relatedBy: .Equal, toItem: self.superview, attribute: .CenterX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
     func verticalCenterInContainer() -> Layout {
-        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterY, relatedBy: .Equal, toItem: self.container, attribute: .CenterY, multiplier: 1.0, constant: 0)
+        let l =  NSLayoutConstraint(item: self._target, attribute: .CenterY, relatedBy: .Equal, toItem: self.superview, attribute: .CenterY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
@@ -254,80 +254,80 @@ class Layout {
 extension Layout {
     
     
-    private class func addFirstForH(container:UIView, base:UIView, first:UIView) {
+    private class func addFirstForH(superview:UIView, base:UIView, first:UIView) {
         let l =  NSLayoutConstraint(item: base, attribute: .Leading, relatedBy: .Equal, toItem: first, attribute: .Leading, multiplier: 1.0, constant: 0)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
-    private class func addNextSpaceForH(container:UIView, target:UIView, spacer:UIView) {
+    private class func addNextSpaceForH(superview:UIView, target:UIView, spacer:UIView) {
         let l =  NSLayoutConstraint(item: spacer, attribute: .Leading, relatedBy: .LessThanOrEqual, toItem: target, attribute: .Trailing, multiplier: 1.0, constant: 8)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
-    private class func addLastForH(container:UIView, spacer:UIView, base:UIView) {
+    private class func addLastForH(superview:UIView, spacer:UIView, base:UIView) {
         let l =  NSLayoutConstraint(item: spacer, attribute: .Trailing, relatedBy: .Equal, toItem: base, attribute: .Trailing, multiplier: 1.0, constant: 0)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
     
-    class func horizontalEvenSpaceInCotainer(#container:UIView ,views:[UIView],coverSpace:Bool) {
+    class func horizontalEvenSpaceInCotainer(#superview:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
-            horizontalEvenSpaceCoverSpaces(container: container, leadingView: container, trailingView: container, views: views)
+            horizontalEvenSpaceCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         } else {
-            horizontalEvenSpaceNotCoverSpaces(container: container, leadingView: container, trailingView: container, views: views)
+            horizontalEvenSpaceNotCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         }
     }
     
-    class func horizontalEvenSpaceNotCoverSpaces(#container:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
+    class func horizontalEvenSpaceNotCoverSpaces(#superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0..<views.count-1 {
             let spacer = UIView()
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .height(10)
             } else {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .widthIsSame(spacers[0])
                     .height(10)
             }
         }
         
-        Layout.addFirstForH(container, base: leadingView, first: views[0])
+        Layout.addFirstForH(superview, base: leadingView, first: views[0])
         for i in 0..<views.count-1 {
-            Layout.addNextSpaceForH(container, target: views[i], spacer: spacers[i])
-            Layout.addNextSpaceForH(container, target: spacers[i], spacer: views[i+1])
+            Layout.addNextSpaceForH(superview, target: views[i], spacer: spacers[i])
+            Layout.addNextSpaceForH(superview, target: spacers[i], spacer: views[i+1])
         }
-        Layout.addLastForH(container, spacer: views[views.count-1], base: trailingView)
+        Layout.addLastForH(superview, spacer: views[views.count-1], base: trailingView)
     }
     
-    class func horizontalEvenSpaceCoverSpaces(#container:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
+    class func horizontalEvenSpaceCoverSpaces(#superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0...views.count {
             let spacer = UIView()
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .height(10)
             } else {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .widthIsSame(spacers[0])
                     .height(10)
             }
         }
         
-        Layout.addFirstForH(container, base: leadingView, first: spacers[0])
+        Layout.addFirstForH(superview, base: leadingView, first: spacers[0])
         for i in 0..<views.count {
-            Layout.addNextSpaceForH(container, target: spacers[i], spacer: views[i])
-            Layout.addNextSpaceForH(container, target: views[i], spacer: spacers[i+1])
+            Layout.addNextSpaceForH(superview, target: spacers[i], spacer: views[i])
+            Layout.addNextSpaceForH(superview, target: views[i], spacer: spacers[i+1])
         }
-        Layout.addLastForH(container, spacer: spacers[views.count], base: trailingView)
+        Layout.addLastForH(superview, spacer: spacers[views.count], base: trailingView)
     }
     
 }
@@ -338,42 +338,42 @@ extension Layout {
 extension Layout {
     
     
-    private class func addFirstForV(container:UIView, base:UIView, first:UIView) {
+    private class func addFirstForV(superview:UIView, base:UIView, first:UIView) {
         let l =  NSLayoutConstraint(item: base, attribute: .Top, relatedBy: .Equal, toItem: first, attribute: .Top, multiplier: 1.0, constant: 0)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
-    private class func addNextSpaceForV(container:UIView, target:UIView, spacer:UIView) {
+    private class func addNextSpaceForV(superview:UIView, target:UIView, spacer:UIView) {
         let l =  NSLayoutConstraint(item: spacer, attribute: .Top, relatedBy: .LessThanOrEqual, toItem: target, attribute: .Bottom, multiplier: 1.0, constant: 8)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
-    private class func addLastForV(container:UIView, spacer:UIView, base:UIView) {
+    private class func addLastForV(superview:UIView, spacer:UIView, base:UIView) {
         let l =  NSLayoutConstraint(item: spacer, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: 0)
-        container.addConstraint(l)
+        superview.addConstraint(l)
     }
     
     
-    class func verticalEvenSpaceInCotainer(#container:UIView ,views:[UIView],coverSpace:Bool) {
+    class func verticalEvenSpaceInCotainer(#superview:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
-            verticalEvenSpaceCoverSpaces(container: container, leadingView: container, trailingView: container, views: views)
+            verticalEvenSpaceCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         } else {
-            verticalEvenSpaceNotCoverSpaces(container: container, leadingView: container, trailingView: container, views: views)
+            verticalEvenSpaceNotCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         }
     }
     
-    class func verticalEvenSpaceNotCoverSpaces(#container:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
+    class func verticalEvenSpaceNotCoverSpaces(#superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0..<views.count-1 {
             let spacer = UIView()
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .width(10)
             } else {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .heightIsSame(spacers[0])
                     .width(10)
@@ -382,26 +382,26 @@ extension Layout {
             
         }
         
-        Layout.addFirstForV(container, base: leadingView, first: views[0])
+        Layout.addFirstForV(superview, base: leadingView, first: views[0])
         for i in 0..<views.count-1 {
-            Layout.addNextSpaceForV(container, target: views[i], spacer: spacers[i])
-            Layout.addNextSpaceForV(container, target: spacers[i], spacer: views[i+1])
+            Layout.addNextSpaceForV(superview, target: views[i], spacer: spacers[i])
+            Layout.addNextSpaceForV(superview, target: spacers[i], spacer: views[i+1])
         }
-        Layout.addLastForV(container, spacer: views[views.count-1], base: trailingView)
+        Layout.addLastForV(superview, spacer: views[views.count-1], base: trailingView)
     }
     
-    class func verticalEvenSpaceCoverSpaces(#container:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
+    class func verticalEvenSpaceCoverSpaces(#superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0...views.count {
             let spacer = UIView()
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .width(10)
             } else {
-                Layout.regist(spacers[i], container: container)
+                Layout.regist(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .heightIsSame(spacers[0])
                     .width(10)
@@ -409,12 +409,12 @@ extension Layout {
             
         }
         
-        Layout.addFirstForV(container, base: leadingView, first: spacers[0])
+        Layout.addFirstForV(superview, base: leadingView, first: spacers[0])
         for i in 0..<views.count {
-            Layout.addNextSpaceForV(container, target: spacers[i], spacer: views[i])
-            Layout.addNextSpaceForV(container, target: views[i], spacer: spacers[i+1])
+            Layout.addNextSpaceForV(superview, target: spacers[i], spacer: views[i])
+            Layout.addNextSpaceForV(superview, target: views[i], spacer: spacers[i+1])
         }
-        Layout.addLastForV(container, spacer: spacers[views.count], base: trailingView)
+        Layout.addLastForV(superview, spacer: spacers[views.count], base: trailingView)
     }
     
 }

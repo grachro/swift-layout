@@ -27,7 +27,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         var l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
-        Layout.regist(l1, container: self.view)
+        Layout.regist(l1, superview: self.view)
             .top(30).fromContainerTop()
             .width(30)
             .height(50)
@@ -35,7 +35,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         var l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
-        Layout.regist(l2, container: self.view)
+        Layout.regist(l2, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
             .height(60)
@@ -44,19 +44,19 @@ class HorizontalEvenSpaceViewController: UIViewController {
         var l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
-        Layout.regist(l3, container: self.view)
+        Layout.regist(l3, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
             .height(60)
         
-        Layout.horizontalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3], coverSpace: true)
+        Layout.horizontalEvenSpaceInCotainer(superview: self.view, views: [l1,l2,l3], coverSpace: true)
     }
     
     private func nonCoverSpace() {
         var l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
-        Layout.regist(l1, container: self.view)
+        Layout.regist(l1, superview: self.view)
             .bottom(30).fromContainerBottom()
             .width(30)
             .height(50)
@@ -64,7 +64,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         var l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
-        Layout.regist(l2, container: self.view)
+        Layout.regist(l2, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
             .height(60)
@@ -73,12 +73,12 @@ class HorizontalEvenSpaceViewController: UIViewController {
         var l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
-        Layout.regist(l3, container: self.view)
+        Layout.regist(l3, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
             .height(60)
         
-        Layout.horizontalEvenSpaceInCotainer(container: self.view, views: [l1,l2,l3], coverSpace: false)
+        Layout.horizontalEvenSpaceInCotainer(superview: self.view, views: [l1,l2,l3], coverSpace: false)
     }
     
     var touchBlocks = TouchBlocks()
@@ -86,7 +86,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
     private func addReturnBtn() {
         
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, container: self.view)
+        Layout.regist(btn, superview: self.view)
             .bottomIsSameContainer()
             .rightIsSameContainer()
         touchBlocks.append(btn){

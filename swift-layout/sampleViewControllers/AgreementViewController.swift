@@ -39,11 +39,11 @@ class AgreementViewController: UIViewController {
             var prefixLabel = Layout.createWordWrappingLabel(prefix)
 
             var bodyLabel = Layout.createWordWrappingLabel(text)
-            let bodyLayout = Layout.regist(bodyLabel, container:containerView)
+            let bodyLayout = Layout.regist(bodyLabel, superview:containerView)
                 .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
             
-            Layout.regist(prefixLabel, container: containerView)
+            Layout.regist(prefixLabel, superview: containerView)
                 .topIsSame(bodyLabel) //Topは本文と同じ
                 .left(15).fromContainerLeft()
                 .backgroundColor(UIColor.redColor())
@@ -72,7 +72,7 @@ class AgreementViewController: UIViewController {
     
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, container: self.view)
+        Layout.regist(btn, superview: self.view)
             .bottomIsSameContainer()
             .rightIsSameContainer()
         
