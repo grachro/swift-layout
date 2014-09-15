@@ -24,15 +24,15 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
         
         
         let text = UILabel()
-        text.text = "中央"
         Layout.regist(text, container: autolayoutPullArea.view)
+            .text("中央")
             .horizontalCenterInContainer()
             .verticalCenterInContainer()
         
         
         let pullAreaBar = UILabel()
-        pullAreaBar.text = "下に引っ張る"
         Layout.regist(pullAreaBar, container: autolayoutPullArea.view)
+            .text("下に引っ張る")
             .rightIsSameContainer()
             .leftIsSameContainer()
             .height(minHeight20)

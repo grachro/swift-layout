@@ -22,8 +22,8 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .backgroundColor(UIColor(red:1.00,green:0.98,blue:0.80,alpha:1.0))
         
         let text = UILabel()
-        text.text = "中央"
         Layout.regist(text, container: autolayoutPullArea.view)
+            .text("中央")
             .horizontalCenterInContainer()
             .verticalCenterInContainer()
         

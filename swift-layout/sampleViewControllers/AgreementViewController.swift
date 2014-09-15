@@ -37,26 +37,24 @@ class AgreementViewController: UIViewController {
             
             
             var prefixLabel = Layout.createWordWrappingLabel(prefix)
-            prefixLabel.backgroundColor = UIColor.redColor()
 
-            
-            
             var bodyLabel = Layout.createWordWrappingLabel(text)
-            bodyLabel.backgroundColor = UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5)
             let bodyLayout = Layout.regist(bodyLabel, container:containerView)
+                .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
             
             Layout.regist(prefixLabel, container: containerView)
                 .topIsSame(bodyLabel) //Topは本文と同じ
                 .left(15).fromContainerLeft()
+                .backgroundColor(UIColor.redColor())
             
             if baseView == nil {
-                bodyLayout
+                Layout.more(bodyLabel)
                     .top(20).fromContainerTop() //1行目のTopはコンテナのTopからの距離
                     .left(15).fromLeft(prefixLabel)
                     .right(15).fromContainerRight()
             } else {
-                bodyLayout
+                Layout.more(bodyLabel)
                     .top(20).fromBottom(baseView!) //2行目以降のTopは前の行のBottomからの距離
                     .left(15).fromLeft(prefixLabel)
                     .right(15).fromContainerRight()
@@ -77,6 +75,7 @@ class AgreementViewController: UIViewController {
         Layout.regist(btn, container: self.view)
             .bottomIsSameContainer()
             .rightIsSameContainer()
+        
         touchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)
         }

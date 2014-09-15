@@ -121,12 +121,12 @@ class LayoutRight {
 
 class Layout {
     
-    class func more(view:UIView, container:UIView) -> Layout {
-        return Layout(view: view, container: container)
+    class func more(view:UIView) -> Layout {
+        return Layout(view: view, container: view.superview!)
     }
-    
+
     class func regist(view:UIView, container:UIView) -> Layout {
-        let layout = more(view, container: container)
+        let layout = Layout(view: view, container: container)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         container.addSubview(view)
         return layout
@@ -436,6 +436,15 @@ extension Layout {
 
 //text,label系
 extension Layout {
+    
+    func text(text:String) -> Layout {
+        if self._target is UILabel {
+            (self._target as UILabel).text = text
+        } else if self._target is UITextField {
+            (self._target as UITextField).text = text
+        }
+        return self
+    }
     
     func fitWidthFromText() -> Layout {
         
