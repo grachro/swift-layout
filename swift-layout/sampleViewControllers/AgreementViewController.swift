@@ -30,36 +30,34 @@ class AgreementViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
 
         let prefix = "・"
-        var containerView = self.view
+        var superviewView = self.view
         var baseView:UIView? = nil
         
         for (index, text) in enumerate(texts) {
             
             
             var prefixLabel = Layout.createWordWrappingLabel(prefix)
-            prefixLabel.backgroundColor = UIColor.redColor()
 
-            
-            
             var bodyLabel = Layout.createWordWrappingLabel(text)
-            bodyLabel.backgroundColor = UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5)
-            let bodyLayout = Layout.regist(bodyLabel, container:containerView)
+            let bodyLayout = Layout.regist(bodyLabel, superview:superviewView)
+                .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
             
-            Layout.regist(prefixLabel, container: containerView)
+            Layout.regist(prefixLabel, superview: superviewView)
                 .topIsSame(bodyLabel) //Topは本文と同じ
-                .left(15).fromContainerLeft()
+                .left(15).fromSuperviewLeft()
+                .backgroundColor(UIColor.redColor())
             
             if baseView == nil {
-                bodyLayout
-                    .top(20).fromContainerTop() //1行目のTopはコンテナのTopからの距離
+                Layout.more(bodyLabel)
+                    .top(20).fromSuperviewTop() //1行目のTopはコンテナのTopからの距離
                     .left(15).fromLeft(prefixLabel)
-                    .right(15).fromContainerRight()
+                    .right(15).fromSuperviewRight()
             } else {
-                bodyLayout
+                Layout.more(bodyLabel)
                     .top(20).fromBottom(baseView!) //2行目以降のTopは前の行のBottomからの距離
                     .left(15).fromLeft(prefixLabel)
-                    .right(15).fromContainerRight()
+                    .right(15).fromSuperviewRight()
             }
             
             baseView = bodyLabel
@@ -70,14 +68,15 @@ class AgreementViewController: UIViewController {
         addReturnBtn()
     }
 
-    var touchBlocks = TouchBlocks()
+ 
     
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, container: self.view)
-            .bottomIsSameContainer()
-            .rightIsSameContainer()
-        touchBlocks.append(btn){
+        Layout.regist(btn, superview: self.view)
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
+        
+        TouchBlocks.append(btn){
             self.dismissViewControllerAnimated(true, completion:nil)
         }
     

@@ -10,67 +10,38 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var touchBlocks = TouchBlocks()
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        let btn0 = Layout.createSystemTypeBtn("サンプル画面aへ")
-        self.touchBlocks.append(btn0) {
-            self.presentViewController(Sample0ViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn0, container: self.view)
-            .left(40).fromContainerLeft()
-        
-        
-        let btn1 = Layout.createSystemTypeBtn("サンプル画面bへ")
-        self.touchBlocks.append(btn1) {
-            self.presentViewController(Sample1ViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn1, container: self.view)
-            .left(40).fromContainerLeft()
-        
-        
-        
-        let btn2 = Layout.createSystemTypeBtn("横に等間隔（両端にスペースあり）")
-        self.touchBlocks.append(btn2) {
-            self.presentViewController(Sample2ViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn2, container: self.view)
-            .leftIsSame(btn1)
 
         
+        let sampleControllers:[(btn:UIButton, controller:UIViewController)] = [
+            (Layout.createSystemTypeBtn("Auto Layout サンプルへ"), AutoLayoutSampleController()),
+            (Layout.createSystemTypeBtn("横に等間隔 サンプルへ"), HorizontalEvenSpaceViewController()),
+            (Layout.createSystemTypeBtn("縦に等間隔 サンプルへ"), VerticalEvenSpaceViewController()),
+            (Layout.createSystemTypeBtn("条文形式画面へ"), AgreementViewController()),
+            (Layout.createSystemTypeBtn("磨りガラス効果へ"), BlurEffectViewController()),
+            (Layout.createSystemTypeBtn("引っ張る1"), PullToRefresh1SampleViewController()),
+            (Layout.createSystemTypeBtn("引っ張る2"), PullToRefresh2SampleViewController()),
+
+        ]
         
-        let btn3 = Layout.createSystemTypeBtn("横に等間隔（両端にスペースなし）")
-        self.touchBlocks.append(btn3) {
-            self.presentViewController(Sample3ViewController(), animated: true, completion: nil)
+        
+        for t in sampleControllers {
+            TouchBlocks.append(t.btn) {
+                self.presentViewController(t.controller, animated: true, completion: nil)
+            }
+            Layout.regist(t.btn, superview: self.view)
+                .left(40).fromSuperviewLeft()
         }
-        Layout.regist(btn3, container: self.view)
-            .leftIsSame(btn1)
         
-        
-        
-        let btn4 = Layout.createSystemTypeBtn("縦に等間隔")
-        self.touchBlocks.append(btn4) {
-            self.presentViewController(Sample4ViewController(), animated: true, completion: nil)
+        let btns = sampleControllers.reduce([]){(var u, var t) -> [UIButton] in
+            u.append(t.btn)
+            return u
         }
-        Layout.regist(btn4, container: self.view)
-            .leftIsSame(btn1)
         
-        
-        
-        let btn5 = Layout.createSystemTypeBtn("条文形式画面へ")
-        self.touchBlocks.append(btn5) {
-            self.presentViewController(AgreementViewController(), animated: true, completion: nil)
-        }
-        Layout.regist(btn5, container: self.view)
-            .leftIsSame(btn1)
-        
-        
-        
-        Layout.verticalEvenSpaceInCotainer(container: self.view, views: [btn0, btn1,btn2,btn3,btn4,btn5], coverSpace: true)
+        Layout.verticalEvenSpaceInCotainer(superview: self.view, views: btns, coverSpace: true)
     }
 
     override func didReceiveMemoryWarning() {

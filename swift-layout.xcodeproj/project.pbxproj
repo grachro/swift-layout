@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F40F38EA19BDCBEC005ED517 /* Sample0ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F38E919BDCBEB005ED517 /* Sample0ViewController.swift */; };
-		F41BA06119BC82F500A0697A /* Sample3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BA06019BC82F500A0697A /* Sample3ViewController.swift */; };
-		F41BA06319BC8DDA00A0697A /* Sample4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */; };
 		F444A1D119BAE66600B4C8C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */; };
 		F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1D219BAE66600B4C8C1 /* ViewController.swift */; };
 		F444A1D619BAE66600B4C8C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F444A1D419BAE66600B4C8C1 /* Main.storyboard */; };
 		F444A1D819BAE66600B4C8C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F444A1D719BAE66600B4C8C1 /* Images.xcassets */; };
 		F444A1E419BAE66600B4C8C1 /* swift_layoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */; };
-		F45D754E19BBDBEE00C39EC9 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */; };
-		F45D755119BBFB0800C39EC9 /* Sample1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D755019BBFB0800C39EC9 /* Sample1ViewController.swift */; };
-		F46957EA19BB3F0E00FB675A /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46957E919BB3F0E00FB675A /* Layout.swift */; };
-		F49079D619BC0A4B007668D5 /* Sample2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49079D519BC0A4B007668D5 /* Sample2ViewController.swift */; };
+		F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AB519C64FF7004A9EBE /* Layout.swift */; };
+		F4750AB919C65395004A9EBE /* AutolayoutPullArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AB819C65395004A9EBE /* AutolayoutPullArea.swift */; };
+		F4750ABB19C653AA004A9EBE /* ScrollViewPuller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABA19C653AA004A9EBE /* ScrollViewPuller.swift */; };
+		F4750AC119C657E3004A9EBE /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABD19C657BC004A9EBE /* AgreementViewController.swift */; };
+		F4750AC219C657E3004A9EBE /* AutoLayoutSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */; };
+		F4750AC319C657E3004A9EBE /* HorizontalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */; };
+		F4750AC419C657E3004A9EBE /* VerticalEvenSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */; };
+		F4750AC619C6598F004A9EBE /* PullToRefresh1SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */; };
+		F4750AC819C6599A004A9EBE /* PullToRefresh2SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */; };
+		F4750ACA19C7119D004A9EBE /* BlurEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AC919C7119D004A9EBE /* BlurEffectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,9 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F40F38E919BDCBEB005ED517 /* Sample0ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample0ViewController.swift; sourceTree = "<group>"; };
-		F41BA06019BC82F500A0697A /* Sample3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample3ViewController.swift; sourceTree = "<group>"; };
-		F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample4ViewController.swift; sourceTree = "<group>"; };
 		F444A1CB19BAE66600B4C8C1 /* swift-layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F444A1CF19BAE66600B4C8C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,10 +44,16 @@
 		F444A1DD19BAE66600B4C8C1 /* swift-layoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swift-layoutTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F444A1E219BAE66600B4C8C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_layoutTests.swift; sourceTree = "<group>"; };
-		F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
-		F45D755019BBFB0800C39EC9 /* Sample1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample1ViewController.swift; sourceTree = "<group>"; };
-		F46957E919BB3F0E00FB675A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		F49079D519BC0A4B007668D5 /* Sample2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample2ViewController.swift; sourceTree = "<group>"; };
+		F4750AB519C64FF7004A9EBE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		F4750AB819C65395004A9EBE /* AutolayoutPullArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutPullArea.swift; sourceTree = "<group>"; };
+		F4750ABA19C653AA004A9EBE /* ScrollViewPuller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewPuller.swift; sourceTree = "<group>"; };
+		F4750ABD19C657BC004A9EBE /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutSampleViewController.swift; sourceTree = "<group>"; };
+		F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalEvenSpaceViewController.swift; sourceTree = "<group>"; };
+		F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalEvenSpaceViewController.swift; sourceTree = "<group>"; };
+		F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh1SampleViewController.swift; sourceTree = "<group>"; };
+		F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh2SampleViewController.swift; sourceTree = "<group>"; };
+		F4750AC919C7119D004A9EBE /* BlurEffectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurEffectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 		F444A1C219BAE66600B4C8C1 = {
 			isa = PBXGroup;
 			children = (
+				F4750AB519C64FF7004A9EBE /* Layout.swift */,
+				F4750AB719C65383004A9EBE /* add-on */,
 				F444A1CD19BAE66600B4C8C1 /* swift-layout */,
 				F444A1E019BAE66600B4C8C1 /* swift-layoutTests */,
 				F444A1CC19BAE66600B4C8C1 /* Products */,
@@ -89,8 +97,7 @@
 		F444A1CD19BAE66600B4C8C1 /* swift-layout */ = {
 			isa = PBXGroup;
 			children = (
-				F45D754F19BBDDD400C39EC9 /* sampleViewControllers */,
-				F46957E919BB3F0E00FB675A /* Layout.swift */,
+				F4750ABC19C657BC004A9EBE /* sampleViewControllers */,
 				F444A1D019BAE66600B4C8C1 /* AppDelegate.swift */,
 				F444A1D219BAE66600B4C8C1 /* ViewController.swift */,
 				F444A1D419BAE66600B4C8C1 /* Main.storyboard */,
@@ -125,17 +132,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F45D754F19BBDDD400C39EC9 /* sampleViewControllers */ = {
+		F4750AB719C65383004A9EBE /* add-on */ = {
 			isa = PBXGroup;
 			children = (
-				F45D754D19BBDBEE00C39EC9 /* AgreementViewController.swift */,
-				F40F38E919BDCBEB005ED517 /* Sample0ViewController.swift */,
-				F45D755019BBFB0800C39EC9 /* Sample1ViewController.swift */,
-				F49079D519BC0A4B007668D5 /* Sample2ViewController.swift */,
-				F41BA06019BC82F500A0697A /* Sample3ViewController.swift */,
-				F41BA06219BC8DDA00A0697A /* Sample4ViewController.swift */,
+				F4750AB819C65395004A9EBE /* AutolayoutPullArea.swift */,
+				F4750ABA19C653AA004A9EBE /* ScrollViewPuller.swift */,
 			);
-			name = sampleViewControllers;
+			path = "add-on";
+			sourceTree = "<group>";
+		};
+		F4750ABC19C657BC004A9EBE /* sampleViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F4750ABD19C657BC004A9EBE /* AgreementViewController.swift */,
+				F4750ABE19C657BC004A9EBE /* AutoLayoutSampleViewController.swift */,
+				F4750ABF19C657BC004A9EBE /* HorizontalEvenSpaceViewController.swift */,
+				F4750AC019C657BC004A9EBE /* VerticalEvenSpaceViewController.swift */,
+				F4750AC519C6598F004A9EBE /* PullToRefresh1SampleViewController.swift */,
+				F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */,
+				F4750AC919C7119D004A9EBE /* BlurEffectViewController.swift */,
+			);
+			path = sampleViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,15 +254,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40F38EA19BDCBEC005ED517 /* Sample0ViewController.swift in Sources */,
-				F45D755119BBFB0800C39EC9 /* Sample1ViewController.swift in Sources */,
+				F4750AC119C657E3004A9EBE /* AgreementViewController.swift in Sources */,
+				F4750AC819C6599A004A9EBE /* PullToRefresh2SampleViewController.swift in Sources */,
+				F4750AC219C657E3004A9EBE /* AutoLayoutSampleViewController.swift in Sources */,
+				F4750AC319C657E3004A9EBE /* HorizontalEvenSpaceViewController.swift in Sources */,
+				F4750AC419C657E3004A9EBE /* VerticalEvenSpaceViewController.swift in Sources */,
+				F4750AC619C6598F004A9EBE /* PullToRefresh1SampleViewController.swift in Sources */,
+				F4750ACA19C7119D004A9EBE /* BlurEffectViewController.swift in Sources */,
+				F4750AB919C65395004A9EBE /* AutolayoutPullArea.swift in Sources */,
+				F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */,
 				F444A1D319BAE66600B4C8C1 /* ViewController.swift in Sources */,
 				F444A1D119BAE66600B4C8C1 /* AppDelegate.swift in Sources */,
-				F41BA06319BC8DDA00A0697A /* Sample4ViewController.swift in Sources */,
-				F41BA06119BC82F500A0697A /* Sample3ViewController.swift in Sources */,
-				F46957EA19BB3F0E00FB675A /* Layout.swift in Sources */,
-				F45D754E19BBDBEE00C39EC9 /* AgreementViewController.swift in Sources */,
-				F49079D619BC0A4B007668D5 /* Sample2ViewController.swift in Sources */,
+				F4750ABB19C653AA004A9EBE /* ScrollViewPuller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
