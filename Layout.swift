@@ -21,6 +21,7 @@ class LayoutTop {
     func fromTop(base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
+        self._layout._topConstraint = l
         return self._layout
     }
     
@@ -75,13 +76,14 @@ class LayoutLeft {
     }
     
     
-    func fromLeft(base:UIView) -> Layout{
+    func fromLeft(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Left, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
+        self._layout._leftConstraint = l
         return self._layout
     }
     
-    func fromRight(base:UIView) -> Layout{
+    func fromRight(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Left, relatedBy: .Equal, toItem: base, attribute: .Right, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
@@ -132,24 +134,64 @@ class Layout {
         return layout
     }
     
+    class func registUIView(#superview:UIView) -> Layout {
+        return regist(UIView(), superview:superview)
+    }
+    
+    class func registSystemTypeBtn(title:String, superview:UIView) -> Layout {
+        return regist(Layout.createSystemTypeBtn(title), superview:superview)
+    }
+
+    
     private let _target:UIView
-    private let superview:UIView
-    private var _constraint:NSLayoutConstraint? = nil
+    private var superview:UIView
+    private var _lastConstraint:NSLayoutConstraint? = nil
+    private var _leftConstraint:NSLayoutConstraint? = nil
+    private var _topConstraint:NSLayoutConstraint? = nil
+    private var _allConstraint:[NSLayoutConstraint]? = nil
+    
+    var target:UIView {get{return _target}}
     
     private init(view:UIView, superview:UIView) {
         self._target = view
         self.superview = superview
     }
     
+   
+    func changeSuperview(#newSuperview:UIView) -> Layout {
+        
+        //remove from old supservire
+        if self._allConstraint != nil {
+            for c in self._allConstraint! {
+                newSuperview.removeConstraint(c)
+            }
+        }
+        self._target.removeFromSuperview()
+        
+        //change
+        self.superview = newSuperview
+        newSuperview.addSubview(self._target)
+  
+        return self
+    }
+
+    
+ 
+    
     func lastConstraint(inout constraint:NSLayoutConstraint?) -> Layout {
-        constraint = self._constraint
+        constraint = self._lastConstraint
         return self
         
     }
     
-    func addLayoutConstraint(constraint:NSLayoutConstraint) {
-        self._constraint = constraint
+    private func addLayoutConstraint(constraint:NSLayoutConstraint) {
+        self._lastConstraint = constraint
         self.superview.addConstraint(constraint)
+        
+        if self._allConstraint == nil {
+            self._allConstraint = []
+        }
+        self._allConstraint!.append(constraint)
     }
     
     func top(size:CGFloat) -> LayoutTop {
@@ -187,7 +229,7 @@ class Layout {
     func leftIsSameSuperview() -> Layout {
         return leftIsSame(self.superview)
     }
-    
+
     func right(size:CGFloat) -> LayoutRight {
         return LayoutRight(layout: self, size: size)
     }
@@ -258,6 +300,63 @@ class Layout {
     }
 }
 
+
+//change constant
+extension Layout {
+
+    func toLeft(size:CGFloat) -> Layout {
+        self._leftConstraint?.constant = size
+        return self
+    }
+    
+    func toTop(size:CGFloat) -> Layout {
+        self._topConstraint?.constant = size
+        return self
+    }
+    
+    
+}
+
+
+//screen positon
+extension Layout {
+ 
+    func viewController() -> UIViewController? {
+        return viewController(self._target.nextResponder())
+    }
+    
+    private func viewController(responder:UIResponder?) -> UIViewController? {
+        if responder == nil {
+            return nil
+        } else if responder is UIViewController {
+            return responder as UIViewController!
+        }
+        
+        return viewController(responder!.nextResponder())
+    }
+ 
+    func rootView() -> UIView {
+        return Layout.rootView(self._target)
+    }
+    
+    class func rootView(view:UIView) -> UIView {
+        if view.superview == nil {
+            return view
+        } else {
+            return rootView(view.superview!)
+        }
+    }
+    
+    func displayRect() -> CGRect {
+        return self._target.convertRect(self._target.bounds, toView: Layout.rootView(self._target))
+    }
+    
+    //func anotherViewRect(anotherView:UIView) -> CGRect {
+    //   return self._target.convertRect(self._target.bounds, fromView: anotherView)
+    //}
+}
+
+
 //horizontalEvenSpace
 extension Layout {
     
@@ -277,6 +376,12 @@ extension Layout {
         superview.addConstraint(l)
     }
     
+    
+    class func horizontalEvenSpaceInCotainer(#superview:UIView ,layouts:[Layout],coverSpace:Bool) {
+        var tmpView:[UIView] = []
+        layouts.map({tmpView.append($0.target)})
+        horizontalEvenSpaceInCotainer(superview:superview ,views:tmpView,coverSpace:coverSpace)
+    }
     
     class func horizontalEvenSpaceInCotainer(#superview:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
@@ -456,6 +561,11 @@ extension Layout {
 
     func toggle(val:Bool) -> Layout {
         self._target.hidden =  !self._target.hidden
+        return self
+    }
+    
+    func zPosition(val:CGFloat) -> Layout {
+        self._target.layer.zPosition = val
         return self
     }
     
