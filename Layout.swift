@@ -151,6 +151,7 @@ class Layout {
     private var _allConstraint:[NSLayoutConstraint]? = nil
     
     var target:UIView {get{return _target}}
+    var view:UIView {get{return _target}}
     
     private init(view:UIView, superview:UIView) {
         self._target = view
@@ -346,14 +347,15 @@ extension Layout {
             return rootView(view.superview!)
         }
     }
-    
+
     func displayRect() -> CGRect {
+        rootView().layoutIfNeeded()
         return self._target.convertRect(self._target.bounds, toView: Layout.rootView(self._target))
     }
     
-    //func anotherViewRect(anotherView:UIView) -> CGRect {
-    //   return self._target.convertRect(self._target.bounds, fromView: anotherView)
-    //}
+    func anotherViewRect(anotherView:UIView) -> CGRect {
+       return anotherView.convertRect(anotherView.bounds, toView: self._target)
+    }
 }
 
 
