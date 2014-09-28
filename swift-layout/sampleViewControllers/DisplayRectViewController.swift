@@ -34,6 +34,16 @@ class DisplayRectViewController: UIViewController {
         println(subView.displayRect())
      
         
+        let layout = Layout.registUILabel(superview: self.view)
+            .text("赤枠の画面上の座標\(viewA.displayRect())")
+            .top(10).fromBottom(viewA.view)
+            .left(10).fromSuperviewLeft()
+        
+        Layout.registUILabel(superview: self.view)
+            .text("青枠の画面上の座標\(subView.displayRect())")
+            .top(10).fromBottom(layout.view)
+            .left(10).fromSuperviewLeft()
+        
     }
 
     override func didReceiveMemoryWarning() {

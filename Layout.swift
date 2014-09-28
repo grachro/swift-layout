@@ -138,6 +138,14 @@ class Layout {
         return regist(UIView(), superview:superview)
     }
     
+    class func registUILabel(#superview:UIView) -> Layout {
+        return regist(UILabel(), superview:superview)
+    }
+    
+    class func registUITextField(#superview:UIView) -> Layout {
+        return regist(UITextField(), superview:superview)
+    }
+    
     class func registSystemTypeBtn(title:String, superview:UIView) -> Layout {
         return regist(Layout.createSystemTypeBtn(title), superview:superview)
     }
@@ -723,7 +731,49 @@ extension Layout {
 
 }
 
-
+extension Layout {
+    class func roundRect(view:UIView, byRoundingCorners corners: UIRectCorner,cornerRadii:CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: view.bounds,
+            byRoundingCorners: corners,
+            cornerRadii: CGSizeMake(cornerRadii, cornerRadii)
+        )
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.frame = view.bounds
+        shapeLayer.path = path.CGPath
+        view.layer.mask = shapeLayer
+    }
+    
+    func roundRect(byRoundingCorners corners: UIRectCorner,cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: corners, cornerRadii:cornerRadii)
+        return self
+    }
+    
+    func roundRectTop(cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.TopRight), cornerRadii:cornerRadii)
+        return self
+    }
+    
+    func roundRectLeft(cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomLeft), cornerRadii:cornerRadii)
+        return self
+    }
+    
+    func roundRectRight(cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopRight | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        return self
+    }
+    
+    func roundRectBottom(cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.BottomLeft | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        return self
+    }
+}
 
 //touchイベントの登録にブロックを渡せるようにする
 private var touchBlockStaticList:[TouchBlock] = []

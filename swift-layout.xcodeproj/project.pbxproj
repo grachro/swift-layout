@@ -13,6 +13,7 @@
 		F444A1D819BAE66600B4C8C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F444A1D719BAE66600B4C8C1 /* Images.xcassets */; };
 		F444A1E419BAE66600B4C8C1 /* swift_layoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */; };
 		F456307A19D0FA4500DD4CB4 /* DisplayRectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456307919D0FA4500DD4CB4 /* DisplayRectViewController.swift */; };
+		F45630AA19D8309400DD4CB4 /* RoundedRectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45630A919D8309400DD4CB4 /* RoundedRectViewController.swift */; };
 		F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AB519C64FF7004A9EBE /* Layout.swift */; };
 		F4750AB919C65395004A9EBE /* AutolayoutPullArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750AB819C65395004A9EBE /* AutolayoutPullArea.swift */; };
 		F4750ABB19C653AA004A9EBE /* ScrollViewPuller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4750ABA19C653AA004A9EBE /* ScrollViewPuller.swift */; };
@@ -46,6 +47,7 @@
 		F444A1E219BAE66600B4C8C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F444A1E319BAE66600B4C8C1 /* swift_layoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_layoutTests.swift; sourceTree = "<group>"; };
 		F456307919D0FA4500DD4CB4 /* DisplayRectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayRectViewController.swift; sourceTree = "<group>"; };
+		F45630A919D8309400DD4CB4 /* RoundedRectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectViewController.swift; sourceTree = "<group>"; };
 		F4750AB519C64FF7004A9EBE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		F4750AB819C65395004A9EBE /* AutolayoutPullArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutolayoutPullArea.swift; sourceTree = "<group>"; };
 		F4750ABA19C653AA004A9EBE /* ScrollViewPuller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewPuller.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F4750AC719C6599A004A9EBE /* PullToRefresh2SampleViewController.swift */,
 				F4750AC919C7119D004A9EBE /* BlurEffectViewController.swift */,
 				F456307919D0FA4500DD4CB4 /* DisplayRectViewController.swift */,
+				F45630A919D8309400DD4CB4 /* RoundedRectViewController.swift */,
 			);
 			path = sampleViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				F4750AC319C657E3004A9EBE /* HorizontalEvenSpaceViewController.swift in Sources */,
 				F4750AC419C657E3004A9EBE /* VerticalEvenSpaceViewController.swift in Sources */,
 				F4750AC619C6598F004A9EBE /* PullToRefresh1SampleViewController.swift in Sources */,
+				F45630AA19D8309400DD4CB4 /* RoundedRectViewController.swift in Sources */,
 				F4750ACA19C7119D004A9EBE /* BlurEffectViewController.swift in Sources */,
 				F4750AB919C65395004A9EBE /* AutolayoutPullArea.swift in Sources */,
 				F4750AB619C64FF7004A9EBE /* Layout.swift in Sources */,

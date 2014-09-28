@@ -25,6 +25,7 @@ class ViewController: UIViewController {
             (Layout.createSystemTypeBtn("引っ張る1"), PullToRefresh1SampleViewController()),
             (Layout.createSystemTypeBtn("引っ張る2"), PullToRefresh2SampleViewController()),
             (Layout.createSystemTypeBtn("SubViewの座標"), DisplayRectViewController()),
+            (Layout.createSystemTypeBtn("角丸各種"), RoundedRectViewController()),
 
         ]
         
