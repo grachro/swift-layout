@@ -12,7 +12,7 @@ Just add Layout.swift to your project.
 Sample
 --------
 
-nomarl swift code.
+normal swift code.
 ````swift
 let view = UIView()
 
@@ -28,6 +28,7 @@ superView.addConstraints(constraints)
 view.backgroundColor = UIColor.blueColor()
 ````
 
+
 swift-layout code.
 ````swift
 Layout.regist(UIView(), superview: superView)
@@ -37,7 +38,6 @@ Layout.regist(UIView(), superview: superView)
     .height(100)
     .backgroundColor(UIColor.blueColor())
 ````
-
 or
 ````swift
 Layout.registUIView(superview: superView)
