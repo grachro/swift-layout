@@ -14,7 +14,7 @@ class RoundedRectViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.whiteColor()
-            let layout1 = Layout.registUILabel(superview: self.view)
+            let lTop = Layout.registUILabel(superview: self.view)
             .top(30).fromSuperviewTop()
             .left(50).fromSuperviewLeft()
             .width(100)
@@ -23,8 +23,8 @@ class RoundedRectViewController: UIViewController {
             .text("Top")
             .roundRectTop(20)
         
-        let layout2 = Layout.registUILabel(superview: self.view)
-            .top(10).fromBottom(layout1.view)
+        let lRight = Layout.registUILabel(superview: self.view)
+            .top(10).fromBottom(lTop.view)
             .left(50).fromSuperviewLeft()
             .width(100)
             .height(100)
@@ -32,18 +32,18 @@ class RoundedRectViewController: UIViewController {
             .text("Right")
             .roundRectRight(20)
   
-        let layout3 = Layout.registUILabel(superview: self.view)
+        let lLeft = Layout.registUILabel(superview: self.view)
             .top(30).fromSuperviewTop()
-            .left(10).fromRight(layout1.view)
+            .left(10).fromRight(lTop.view)
             .width(100)
             .height(100)
             .backgroundColor(UIColor.yellowColor())
             .text("Left")
             .roundRectLeft(20)
         
-        let layout4 = Layout.registUILabel(superview: self.view)
-            .top(10).fromBottom(layout3.view)
-            .left(10).fromRight(layout2.view)
+        let lBottom = Layout.registUILabel(superview: self.view)
+            .top(10).fromBottom(lLeft.view)
+            .left(10).fromRight(lRight.view)
             .width(100)
             .height(100)
             .backgroundColor(UIColor.greenColor())
@@ -51,12 +51,20 @@ class RoundedRectViewController: UIViewController {
             .roundRectBottom(20)
         
         let layout5 = Layout.regist(Layout.createCharWrappingLabel("TopLeft\nBottomRight"), superview: self.view)
-            .top(10).fromBottom(layout2.view)
+            .top(10).fromBottom(lRight.view)
             .left(50).fromSuperviewLeft()
             .width(100)
             .height(100)
             .backgroundColor(UIColor.grayColor())
             .roundRect(byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomRight), cornerRadii: 20)
+        
+        let layout6 = Layout.regist(Layout.createCharWrappingLabel("all"), superview: self.view)
+            .top(10).fromBottom(lRight.view)
+            .left(10).fromRight(lTop.view)
+            .width(100)
+            .height(100)
+            .backgroundColor(UIColor.blueColor())
+            .roundRect(20)
     }
 
     override func didReceiveMemoryWarning() {

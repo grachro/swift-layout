@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>577D42CE-EC4A-4144-AFA5-ED4CD04021FC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>swift-layout</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>30870D1A54F5E9CECC9E12F6B05A6301645D7815</key>
+		<string>https://github.com/grachro/swift-layout.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>swift-layout.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>30870D1A54F5E9CECC9E12F6B05A6301645D7815</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/grachro/swift-layout.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>30870D1A54F5E9CECC9E12F6B05A6301645D7815</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>30870D1A54F5E9CECC9E12F6B05A6301645D7815</string>
+			<key>IDESourceControlWCCName</key>
+			<string>swift-layout</string>
+		</dict>
+	</array>
+</dict>
+</plist>

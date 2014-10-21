@@ -184,15 +184,18 @@ class Layout {
         return self
     }
 
-    
- 
-    
+
     func lastConstraint(inout constraint:NSLayoutConstraint?) -> Layout {
         constraint = self._lastConstraint
         return self
         
     }
     
+    func lastConstraintPriority(priority:Int) -> Layout {
+        self._lastConstraint?.priority
+        return self
+    }
+
     private func addLayoutConstraint(constraint:NSLayoutConstraint) {
         self._lastConstraint = constraint
         self.superview.addConstraint(constraint)
@@ -771,6 +774,12 @@ extension Layout {
     func roundRectBottom(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
         Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.BottomLeft | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        return self
+    }
+    
+    func roundRect(cornerRadii:CGFloat) -> Layout {
+        self._target.layoutIfNeeded()
+        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.TopRight | UIRectCorner.BottomLeft | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
         return self
     }
 }
