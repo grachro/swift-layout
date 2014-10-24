@@ -131,9 +131,9 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         let cell = UITableViewCell()
         if indexPath.row == 0 {
-            cell.textLabel?.text = "下に引っ張る"
+            cell.textLabel.text = "下に引っ張る"
         } else {
-            cell.textLabel?.text = ""
+            cell.textLabel.text = ""
         }
         
         return cell

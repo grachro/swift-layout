@@ -65,6 +65,21 @@ class RoundedRectViewController: UIViewController {
             .height(100)
             .backgroundColor(UIColor.blueColor())
             .roundRect(20)
+        
+        //戻るボタン
+        addReturnBtn()
+    }
+    
+    private func addReturnBtn() {
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, superview: self.view)
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
+        
+        TouchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

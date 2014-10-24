@@ -44,12 +44,24 @@ class DisplayRectViewController: UIViewController {
             .top(10).fromBottom(layout.view)
             .left(10).fromSuperviewLeft()
         
+        //戻るボタン
+        addReturnBtn()
     }
 
+    private func addReturnBtn() {
+        let btn = Layout.createSystemTypeBtn("return")
+        Layout.regist(btn, superview: self.view)
+            .bottomIsSameSuperview()
+            .rightIsSameSuperview()
+        
+        TouchBlocks.append(btn){
+            self.dismissViewControllerAnimated(true, completion:nil)
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
 
 }

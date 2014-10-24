@@ -30,11 +30,18 @@ class LayoutTop {
     }
     
     func fromBottom(base:UIView) -> Layout{
+        return fromBottomAny(base)
+    }
+    
+    func fromBottom(base:UILayoutSupport) -> Layout{
+        return fromBottomAny(base)
+    }
+    
+    private func fromBottomAny(base:AnyObject) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Top, relatedBy: .Equal, toItem: base, attribute: .Bottom, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
-    
 }
 
 
@@ -47,7 +54,15 @@ class LayoutBottom {
         self._size = size
     }
     
-    func fromTop(base:UIView) -> Layout{
+    func fromTop(base:UIView) -> Layout {
+        return fromTopAny(base)
+    }
+    
+    func fromTop(base:UILayoutSupport) -> Layout {
+        return fromTopAny(base)
+    }
+    
+    private func fromTopAny(base:AnyObject) -> Layout {
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .Bottom, relatedBy: .Equal, toItem: base, attribute: .Top, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
@@ -196,9 +211,14 @@ class Layout {
         return self
     }
 
-    private func addLayoutConstraint(constraint:NSLayoutConstraint) {
+    private func addLayoutConstraint(constraint:NSLayoutConstraint, constraintOwner:UIView?=nil) {
         self._lastConstraint = constraint
-        self.superview.addConstraint(constraint)
+        
+        if let owner = constraintOwner as UIView! {
+            owner.addConstraint(constraint)
+        } else {
+            self.superview.addConstraint(constraint)
+        }
         
         if self._allConstraint == nil {
             self._allConstraint = []
@@ -268,12 +288,16 @@ class Layout {
         return self
     }
     
-    func widthIsSame(base:UIView) -> Layout {
+    func widthIsSame(base:UIView, constraintOwner:UIView? = nil) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .Width, relatedBy: .Equal, toItem: base, attribute: .Width, multiplier: 1.0, constant: 0)
-        self.addLayoutConstraint(l)
+        self.addLayoutConstraint(l, constraintOwner:constraintOwner)
         return self
     }
     
+    func widthIsSameSuperview() -> Layout {
+        return widthIsSame(self.superview)
+    }
+
     func height(size:CGFloat) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: size)
         self.addLayoutConstraint(l)
@@ -286,6 +310,11 @@ class Layout {
         return self
     }
     
+    //TODO test
+    func heightIsSameSuperview() -> Layout {
+        return heightIsSame(self.superview)
+    }
+
     func horizontalCenterIsSame(base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: base, attribute: .CenterX, relatedBy: .Equal, toItem: self._target, attribute: .CenterX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)

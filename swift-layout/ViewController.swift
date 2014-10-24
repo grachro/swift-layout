@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             (Layout.createSystemTypeBtn("引っ張る2"), PullToRefresh2SampleViewController()),
             (Layout.createSystemTypeBtn("SubViewの座標"), DisplayRectViewController()),
             (Layout.createSystemTypeBtn("角丸各種"), RoundedRectViewController()),
-
+            (Layout.createSystemTypeBtn("ScrollViewにWordWrappingラベル"), ScrollViewAndWordWrappingLabelController()),
         ]
         
         
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
                 self.presentViewController(t.controller, animated: true, completion: nil)
             }
             Layout.regist(t.btn, superview: self.view)
-                .left(40).fromSuperviewLeft()
+                .left(20).fromSuperviewLeft()
         }
         
         let btns = sampleControllers.reduce([]){(var u, var t) -> [UIButton] in
