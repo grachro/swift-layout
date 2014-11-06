@@ -142,27 +142,27 @@ class Layout {
         return Layout(view: view, superview: view.superview!)
     }
 
-    class func regist(view:UIView, superview:UIView) -> Layout {
+    class func addSubView(view:UIView, superview:UIView) -> Layout {
         let layout = Layout(view: view, superview: superview)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         superview.addSubview(view)
         return layout
     }
     
-    class func registUIView(#superview:UIView) -> Layout {
-        return regist(UIView(), superview:superview)
+    class func addUIView(#superview:UIView) -> Layout {
+        return addSubView(UIView(), superview:superview)
     }
     
-    class func registUILabel(#superview:UIView) -> Layout {
-        return regist(UILabel(), superview:superview)
+    class func addUILabel(#superview:UIView) -> Layout {
+        return addSubView(UILabel(), superview:superview)
     }
     
-    class func registUITextField(#superview:UIView) -> Layout {
-        return regist(UITextField(), superview:superview)
+    class func addUITextField(#superview:UIView) -> Layout {
+        return addSubView(UITextField(), superview:superview)
     }
     
-    class func registSystemTypeBtn(title:String, superview:UIView) -> Layout {
-        return regist(Layout.createSystemTypeBtn(title), superview:superview)
+    class func addSystemTypeBtn(title:String, superview:UIView) -> Layout {
+        return addSubView(Layout.createSystemTypeBtn(title), superview:superview)
     }
 
     
@@ -440,11 +440,11 @@ extension Layout {
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .height(10)
             } else {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .widthIsSame(spacers[0])
                     .height(10)
@@ -466,11 +466,11 @@ extension Layout {
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .height(10)
             } else {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .verticalCenterIsSame(views[0])
                     .widthIsSame(spacers[0])
                     .height(10)
@@ -524,11 +524,11 @@ extension Layout {
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .width(10)
             } else {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .heightIsSame(spacers[0])
                     .width(10)
@@ -552,11 +552,11 @@ extension Layout {
             spacers.append(spacer)
             
             if i == 0 {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .width(10)
             } else {
-                Layout.regist(spacers[i], superview: superview)
+                Layout.addSubView(spacers[i], superview: superview)
                     .horizontalCenterIsSame(views[0])
                     .heightIsSame(spacers[0])
                     .width(10)

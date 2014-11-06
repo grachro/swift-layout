@@ -14,7 +14,7 @@ class RoundedRectViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.whiteColor()
-            let lTop = Layout.registUILabel(superview: self.view)
+            let lTop = Layout.addUILabel(superview: self.view)
             .top(30).fromSuperviewTop()
             .left(50).fromSuperviewLeft()
             .width(100)
@@ -23,7 +23,7 @@ class RoundedRectViewController: UIViewController {
             .text("Top")
             .roundRectTop(20)
         
-        let lRight = Layout.registUILabel(superview: self.view)
+        let lRight = Layout.addUILabel(superview: self.view)
             .top(10).fromBottom(lTop.view)
             .left(50).fromSuperviewLeft()
             .width(100)
@@ -32,7 +32,7 @@ class RoundedRectViewController: UIViewController {
             .text("Right")
             .roundRectRight(20)
   
-        let lLeft = Layout.registUILabel(superview: self.view)
+        let lLeft = Layout.addUILabel(superview: self.view)
             .top(30).fromSuperviewTop()
             .left(10).fromRight(lTop.view)
             .width(100)
@@ -41,7 +41,7 @@ class RoundedRectViewController: UIViewController {
             .text("Left")
             .roundRectLeft(20)
         
-        let lBottom = Layout.registUILabel(superview: self.view)
+        let lBottom = Layout.addUILabel(superview: self.view)
             .top(10).fromBottom(lLeft.view)
             .left(10).fromRight(lRight.view)
             .width(100)
@@ -50,7 +50,7 @@ class RoundedRectViewController: UIViewController {
             .text("Bottom")
             .roundRectBottom(20)
         
-        let layout5 = Layout.regist(Layout.createCharWrappingLabel("TopLeft\nBottomRight"), superview: self.view)
+        let layout5 = Layout.addSubView(Layout.createCharWrappingLabel("TopLeft\nBottomRight"), superview: self.view)
             .top(10).fromBottom(lRight.view)
             .left(50).fromSuperviewLeft()
             .width(100)
@@ -58,7 +58,7 @@ class RoundedRectViewController: UIViewController {
             .backgroundColor(UIColor.grayColor())
             .roundRect(byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomRight), cornerRadii: 20)
         
-        let layout6 = Layout.regist(Layout.createCharWrappingLabel("all"), superview: self.view)
+        let layout6 = Layout.addSubView(Layout.createCharWrappingLabel("all"), superview: self.view)
             .top(10).fromBottom(lRight.view)
             .left(10).fromRight(lTop.view)
             .width(100)
@@ -72,7 +72,7 @@ class RoundedRectViewController: UIViewController {
     
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, superview: self.view)
+        Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         

@@ -23,14 +23,14 @@ class BlurEffectViewController: UIViewController {
         
         //背景
         var text1 = Layout.createCharWrappingLabel("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-        Layout.regist(text1, superview: self.view)
+        Layout.addSubView(text1, superview: self.view)
             .font(UIFont.systemFontOfSize(20))
             .width(120)
             .top(20).fromSuperviewTop()
             .horizontalCenterInSuperview()
 
         var text2 = Layout.createCharWrappingLabel("ABCDEFG")
-        Layout.regist(text2, superview: self.view)
+        Layout.addSubView(text2, superview: self.view)
             .font(UIFont.boldSystemFontOfSize(40))
             .textColor(UIColor.redColor())
             .width(120)
@@ -39,41 +39,41 @@ class BlurEffectViewController: UIViewController {
         
       
         //磨りガラス配置
-        Layout.regist(extraLight, superview: self.view)
+        Layout.addSubView(extraLight, superview: self.view)
             .coverSuperView()
         
-        Layout.regist(light, superview: self.view)
+        Layout.addSubView(light, superview: self.view)
             .coverSuperView()
             .hide()
         
         
-        Layout.regist(dark, superview: self.view)
+        Layout.addSubView(dark, superview: self.view)
             .coverSuperView()
             .hide()
 
         
         //磨りガラス変更ボタン
         let extraLightBtn = Layout.createSystemTypeBtn("ExtraLight")
-        Layout.regist(extraLightBtn, superview: self.view)
+        Layout.addSubView(extraLightBtn, superview: self.view)
             .bottom(20).fromSuperviewBottom()
             .left(10).fromSuperviewLeft()
             .touchUpInside({self.toggle(0)})
         
         let lightBtn = Layout.createSystemTypeBtn("Light")
-        Layout.regist(lightBtn, superview: self.view)
+        Layout.addSubView(lightBtn, superview: self.view)
             .bottom(20).fromSuperviewBottom()
             .left(10).fromRight(extraLightBtn)
             .touchUpInside({self.toggle(1)})
     
 
         let darkBtn = Layout.createSystemTypeBtn("Dark")
-        Layout.regist(darkBtn, superview: self.view)
+        Layout.addSubView(darkBtn, superview: self.view)
             .bottom(20).fromSuperviewBottom()
             .left(10).fromRight(lightBtn)
             .touchUpInside({self.toggle(2)})
 
         let nothigBtn = Layout.createSystemTypeBtn("nothing")
-        Layout.regist(nothigBtn, superview: self.view)
+        Layout.addSubView(nothigBtn, superview: self.view)
             .bottom(20).fromSuperviewBottom()
             .left(10).fromRight(darkBtn)
             .touchUpInside({self.toggle(3)})
@@ -84,7 +84,7 @@ class BlurEffectViewController: UIViewController {
 
         //戻るボタン
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, superview: self.view)
+        Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
             .touchUpInside({self.dismissViewControllerAnimated(true, completion:nil)})
