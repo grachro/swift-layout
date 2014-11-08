@@ -31,7 +31,7 @@ view.backgroundColor = UIColor.blueColor()
 
 swift-layout code.
 ````swift
-Layout.regist(UIView(), superview: superView)
+Layout.addSubView(UIView(), superview: superView)
     .left(50).fromLeft(superView)
     .top(50).fromTop(superView)
     .width(100)
@@ -40,7 +40,7 @@ Layout.regist(UIView(), superview: superView)
 ````
 or
 ````swift
-Layout.registUIView(superview: superView)
+Layout.addUIView(superview: superView)
     .left(50).fromSuperviewLeft()
     .top(50).fromSuperviewTop()
     .width(100)
@@ -50,4 +50,33 @@ Layout.registUIView(superview: superView)
 
 roundRect
 --------
-http://d.hatena.ne.jp/grachro/20140928/1411910831
+````swift
+Layout.addSubView(...)
+    ...
+    .roundRectTop(CGFlow)
+````
+or
+````
+    .roundRectRight(CGFlow)
+    or
+    .roundRectLeft(CGFlow)
+    or
+    .roundRectBottom(CGFlow)
+    or
+    .roundRect(byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomRight), cornerRadii: CGFlow)
+    or
+    .roundRect(CGFlow)
+````
+
+
+blog
+--------
+[SwiftでAutoLayoutを楽に書くには] http://d.hatena.ne.jp/grachro/20140908
+[SwiftでAuto Layout設定した直後に一部を角丸表示] http://d.hatena.ne.jp/grachro/20140928
+
+change history
+--------
+v0.4
+change method name Layout.regist(...) to Layout.addSubView(...)
+
+
