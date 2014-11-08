@@ -30,7 +30,7 @@ class AutolayoutPullArea:ScrollViewPullArea {
         self._minHeight = minHeight
         self._maxHeight = maxHeight
         
-        _layout = Layout.regist(view, superview: superview)
+        _layout = Layout.addSubView(view, superview: superview)
             .horizontalCenterInSuperview()
             .leftIsSameSuperview()
             .rightIsSameSuperview()

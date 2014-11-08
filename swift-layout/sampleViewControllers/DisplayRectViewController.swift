@@ -16,14 +16,14 @@ class DisplayRectViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
  
-        let viewA = Layout.registUIView(superview: self.view)
+        let viewA = Layout.addUIView(superview: self.view)
             .left(10).fromSuperviewLeft()
             .top(10).fromSuperviewTop()
             .width(100)
             .height(50)
             .backgroundColor(UIColor.redColor())
         
-        let subView = Layout.registUIView(superview: viewA.view)
+        let subView = Layout.addUIView(superview: viewA.view)
             .left(30).fromSuperviewLeft()
             .top(15).fromSuperviewTop()
             .width(20)
@@ -34,12 +34,12 @@ class DisplayRectViewController: UIViewController {
         println(subView.displayRect())
      
         
-        let layout = Layout.registUILabel(superview: self.view)
+        let layout = Layout.addUILabel(superview: self.view)
             .text("赤枠の画面上の座標\(viewA.displayRect())")
             .top(10).fromBottom(viewA.view)
             .left(10).fromSuperviewLeft()
         
-        Layout.registUILabel(superview: self.view)
+        Layout.addUILabel(superview: self.view)
             .text("青枠の画面上の座標\(subView.displayRect())")
             .top(10).fromBottom(layout.view)
             .left(10).fromSuperviewLeft()
@@ -50,7 +50,7 @@ class DisplayRectViewController: UIViewController {
 
     private func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
-        Layout.regist(btn, superview: self.view)
+        Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         

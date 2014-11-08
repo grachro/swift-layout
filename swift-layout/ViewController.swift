@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             TouchBlocks.append(t.btn) {
                 self.presentViewController(t.controller, animated: true, completion: nil)
             }
-            Layout.regist(t.btn, superview: self.view)
+            Layout.addSubView(t.btn, superview: self.view)
                 .left(20).fromSuperviewLeft()
         }
         
