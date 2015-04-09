@@ -131,9 +131,9 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         let cell = UITableViewCell()
         if indexPath.row == 0 {
-            cell.textLabel.text = "下に引っ張る"
+            cell.textLabel?.text = "下に引っ張る"
         } else {
-            cell.textLabel.text = ""
+            cell.textLabel?.text = ""
         }
         
         return cell
@@ -141,23 +141,23 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
     
     
     //スクロール開始
-    func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.puller.beginDragScroll(scrollView)
     }
     
     //スクロール終了
-    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.puller.endDragScroll(scrollView, willDecelerate: decelerate)
     }
     
     //
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!)  {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView)  {
         self.puller.endScroll(scrollView)
     }
     
     //スクロール中
     //UITableViewDelegate:UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         self.puller.dragScroll(scrollView)
     }
     

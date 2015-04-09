@@ -367,10 +367,11 @@ extension Layout {
     }
     
     private func viewController(responder:UIResponder?) -> UIViewController? {
+        
         if responder == nil {
             return nil
-        } else if responder is UIViewController {
-            return responder as UIViewController!
+        } else if let viewCon = responder as? UIViewController {
+            return viewCon
         }
         
         return viewController(responder!.nextResponder())
@@ -617,18 +618,19 @@ extension Layout {
 extension Layout {
     
     func text(text:String) -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).text = text
-        } else if self._target is UITextField {
-            (self._target as UITextField).text = text
+        
+        if let l = self._target as? UILabel {
+            l.text = text
+        } else if let t = self._target as? UITextField {
+            t.text = text
         }
+
         return self
     }
     
     func fitWidthFromText() -> Layout {
         
-        if self._target is UILabel {
-            let ui = self._target as UILabel
+        if let ui = self._target as? UILabel {
             ui.sizeToFit()
             self.width(ui.frame.size.width)
             
@@ -638,37 +640,37 @@ extension Layout {
     }
     
     func textAlignmentIsLeft() -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).textAlignment = .Left
-        } else if self._target is UITextField {
-            (self._target as UITextField).textAlignment = .Left
+        if let l = self._target as? UILabel {
+            l.textAlignment = .Left
+        } else if let t = self._target as? UITextField {
+            t.textAlignment = .Left
         }
         return self
     }
     
     func textAlignmentIsCenter() -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).textAlignment = .Center
-        } else if self._target is UITextField {
-            (self._target as UITextField).textAlignment = .Center
+        if let l = self._target as? UILabel {
+            l.textAlignment = .Center
+        } else if let t = self._target as? UITextField {
+            t.textAlignment = .Center
         }
         return self
     }
     
     func textAlignmentIsRight() -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).textAlignment = .Right
-        } else if self._target is UITextField {
-            (self._target as UITextField).textAlignment = .Right
+        if let l = self._target as? UILabel {
+            l.textAlignment = .Right
+        } else if let t = self._target as? UITextField {
+            t.textAlignment = .Right
         }
         return self
     }
     
     func font(font:UIFont) -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).font = font
-        } else if self._target is UITextField {
-            (self._target as UITextField).font = font
+        if let l = self._target as? UILabel {
+            l.font = font
+        } else if let t = self._target as? UITextField {
+            t.font = font
         }
         return self
     }
@@ -684,12 +686,12 @@ extension Layout {
     }
     
     func textColor(color:UIColor) -> Layout {
-        if self._target is UILabel {
-            (self._target as UILabel).textColor = color
-        } else if self._target is UITextField {
-            (self._target as UITextField).textColor = color
-        } else if self._target is UIButton {
-            (self._target as UIButton).setTitleColor(color, forState: .Normal)
+        if let l = self._target as? UILabel {
+            l.textColor = color
+        } else if let t = self._target as? UITextField {
+            t.textColor = color
+        } else if let b = self._target as? UIButton {
+            b.setTitleColor(color, forState: .Normal)
         }
         return self
     }
@@ -700,15 +702,15 @@ extension Layout {
 //text系
 extension Layout {
     func textFieldBorderStyle(style:UITextBorderStyle) -> Layout {
-        if self._target is UITextField {
-            (self._target as UITextField).borderStyle = style
+        if let t = self._target as? UITextField {
+            t.borderStyle = style
         }
         return self
     }
     
     func keyboardType(type:UIKeyboardType) -> Layout {
-        if self._target is UITextField {
-            (self._target as UITextField).keyboardType = type
+        if let t = self._target as? UITextField {
+            t.keyboardType = type
         }
         return self
     }
@@ -717,8 +719,8 @@ extension Layout {
 //イベント系
 extension Layout {
     func touchUpInside(block:() -> Void) -> Layout {
-        if self._target is UIControl {
-            TouchBlocks.append((self._target as UIControl), block: block)
+        if let c = self._target as? UIControl {
+            TouchBlocks.append(c, block: block)
         }
         return self
     }
@@ -728,7 +730,7 @@ extension Layout {
 extension Layout {
     
     class func createSystemTypeBtn(title:String) -> UIButton {
-        let btn = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        let btn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         btn.setTitle(title, forState:.Normal)
         return btn
     }
