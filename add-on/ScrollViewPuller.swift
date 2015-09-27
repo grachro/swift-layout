@@ -13,7 +13,7 @@ protocol ScrollViewPullArea {
     func minHeight() -> CGFloat
     func maxHeight() -> CGFloat
     func animationSpeed() -> NSTimeInterval
-    func show(#viewHeight:CGFloat, pullAreaHeight:CGFloat)
+    func show(viewHeight viewHeight:CGFloat, pullAreaHeight:CGFloat)
 }
 
 class ScrollViewPuller {

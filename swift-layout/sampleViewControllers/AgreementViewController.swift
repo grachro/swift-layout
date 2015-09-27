@@ -30,16 +30,16 @@ class AgreementViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
 
         let prefix = "・"
-        var superviewView = self.view
+        let superviewView = self.view
         var baseView:UIView? = nil
         
-        for (index, text) in enumerate(texts) {
+        for (_, text) in texts.enumerate() {
             
             
-            var prefixLabel = Layout.createWordWrappingLabel(prefix)
+            let prefixLabel = Layout.createWordWrappingLabel(prefix)
 
-            var bodyLabel = Layout.createWordWrappingLabel(text)
-            let bodyLayout = Layout.addSubView(bodyLabel, superview:superviewView)
+            let bodyLabel = Layout.createWordWrappingLabel(text)
+            _ = Layout.addSubView(bodyLabel, superview:superviewView)
                 .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
             

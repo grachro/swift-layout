@@ -25,14 +25,14 @@ class VerticalEvenSpaceViewController: UIViewController {
     
     
     func threeItems() {
-        var l1 = UILabel()
+        let l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.addSubView(l1, superview: self.view)
             .left(50).fromSuperviewLeft()
             .width(30)
         
-        var l2 = UILabel()
+        let l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.addSubView(l2, superview: self.view)
@@ -40,7 +40,7 @@ class VerticalEvenSpaceViewController: UIViewController {
             .widthIsSame(l1)
         
         
-        var l3 = UILabel()
+        let l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.addSubView(l3, superview: self.view)
@@ -51,14 +51,14 @@ class VerticalEvenSpaceViewController: UIViewController {
     }
     
     func fourItems() {
-        var l1 = UILabel()
+        let l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.addSubView(l1, superview: self.view)
             .right(50).fromSuperviewRight()
             .width(30)
         
-        var l2 = UILabel()
+        let l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.addSubView(l2, superview: self.view)
@@ -66,7 +66,7 @@ class VerticalEvenSpaceViewController: UIViewController {
             .widthIsSame(l1)
         
         
-        var l3 = UILabel()
+        let l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.addSubView(l3, superview: self.view)
@@ -74,7 +74,7 @@ class VerticalEvenSpaceViewController: UIViewController {
             .widthIsSame(l1)
         
         
-        var l4 = UILabel()
+        let l4 = UILabel()
         l4.text = "l4"
         l4.backgroundColor = UIColor.yellowColor()
         Layout.addSubView(l4, superview: self.view)

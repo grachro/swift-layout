@@ -22,14 +22,14 @@ class BlurEffectViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         //背景
-        var text1 = Layout.createCharWrappingLabel("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        let text1 = Layout.createCharWrappingLabel("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         Layout.addSubView(text1, superview: self.view)
             .font(UIFont.systemFontOfSize(20))
             .width(120)
             .top(20).fromSuperviewTop()
             .horizontalCenterInSuperview()
 
-        var text2 = Layout.createCharWrappingLabel("ABCDEFG")
+        let text2 = Layout.createCharWrappingLabel("ABCDEFG")
         Layout.addSubView(text2, superview: self.view)
             .font(UIFont.boldSystemFontOfSize(40))
             .textColor(UIColor.redColor())

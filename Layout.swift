@@ -144,20 +144,20 @@ class Layout {
 
     class func addSubView(view:UIView, superview:UIView) -> Layout {
         let layout = Layout(view: view, superview: superview)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         superview.addSubview(view)
         return layout
     }
     
-    class func addUIView(#superview:UIView) -> Layout {
+    class func addUIView(superview superview:UIView) -> Layout {
         return addSubView(UIView(), superview:superview)
     }
     
-    class func addUILabel(#superview:UIView) -> Layout {
+    class func addUILabel(superview superview:UIView) -> Layout {
         return addSubView(UILabel(), superview:superview)
     }
     
-    class func addUITextField(#superview:UIView) -> Layout {
+    class func addUITextField(superview superview:UIView) -> Layout {
         return addSubView(UITextField(), superview:superview)
     }
     
@@ -182,7 +182,7 @@ class Layout {
     }
     
    
-    func changeSuperview(#newSuperview:UIView) -> Layout {
+    func changeSuperview(newSuperview newSuperview:UIView) -> Layout {
         
         //remove from old supservire
         if self._allConstraint != nil {
@@ -420,13 +420,13 @@ extension Layout {
     }
     
     
-    class func horizontalEvenSpaceInCotainer(#superview:UIView ,layouts:[Layout],coverSpace:Bool) {
+    class func horizontalEvenSpaceInCotainer(superview superview:UIView ,layouts:[Layout],coverSpace:Bool) {
         var tmpView:[UIView] = []
         layouts.map({tmpView.append($0.target)})
         horizontalEvenSpaceInCotainer(superview:superview ,views:tmpView,coverSpace:coverSpace)
     }
     
-    class func horizontalEvenSpaceInCotainer(#superview:UIView ,views:[UIView],coverSpace:Bool) {
+    class func horizontalEvenSpaceInCotainer(superview superview:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
             horizontalEvenSpaceCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         } else {
@@ -434,7 +434,7 @@ extension Layout {
         }
     }
     
-    class func horizontalEvenSpaceNotCoverSpaces(#superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
+    class func horizontalEvenSpaceNotCoverSpaces(superview superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0..<views.count-1 {
             let spacer = UIView()
@@ -460,7 +460,7 @@ extension Layout {
         Layout.addLastForH(superview, spacer: views[views.count-1], base: trailingView)
     }
     
-    class func horizontalEvenSpaceCoverSpaces(#superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
+    class func horizontalEvenSpaceCoverSpaces(superview superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0...views.count {
             let spacer = UIView()
@@ -510,7 +510,7 @@ extension Layout {
     }
     
     
-    class func verticalEvenSpaceInCotainer(#superview:UIView ,views:[UIView],coverSpace:Bool) {
+    class func verticalEvenSpaceInCotainer(superview superview:UIView ,views:[UIView],coverSpace:Bool) {
         if coverSpace {
             verticalEvenSpaceCoverSpaces(superview: superview, leadingView: superview, trailingView: superview, views: views)
         } else {
@@ -518,7 +518,7 @@ extension Layout {
         }
     }
     
-    class func verticalEvenSpaceNotCoverSpaces(#superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
+    class func verticalEvenSpaceNotCoverSpaces(superview superview:UIView ,leadingView:UIView, trailingView:UIView,views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0..<views.count-1 {
             let spacer = UIView()
@@ -546,7 +546,7 @@ extension Layout {
         Layout.addLastForV(superview, spacer: views[views.count-1], base: trailingView)
     }
     
-    class func verticalEvenSpaceCoverSpaces(#superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
+    class func verticalEvenSpaceCoverSpaces(superview superview:UIView ,leadingView:UIView,trailingView:UIView, views:[UIView]) {
         var spacers:[UIView] = []
         for i in 0...views.count {
             let spacer = UIView()
@@ -730,13 +730,13 @@ extension Layout {
 extension Layout {
     
     class func createSystemTypeBtn(title:String) -> UIButton {
-        let btn = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let btn = UIButton(type: UIButtonType.System)
         btn.setTitle(title, forState:.Normal)
         return btn
     }
     
     class func createWordWrappingLabel(text:String) -> UILabel {
-        var lbl = UILabel()
+        let lbl = UILabel()
         lbl.text = text
         lbl.numberOfLines  = 0;
         lbl.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -744,7 +744,7 @@ extension Layout {
     }
     
     class func createCharWrappingLabel(text:String) -> UILabel {
-        var lbl = UILabel()
+        let lbl = UILabel()
         lbl.text = text
         lbl.numberOfLines  = 0;
         lbl.lineBreakMode = NSLineBreakMode.ByCharWrapping
@@ -786,31 +786,31 @@ extension Layout {
     
     func roundRectTop(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
-        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.TopRight), cornerRadii:cornerRadii)
+        Layout.roundRect(self._target, byRoundingCorners: ([UIRectCorner.TopLeft, UIRectCorner.TopRight]), cornerRadii:cornerRadii)
         return self
     }
     
     func roundRectLeft(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
-        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomLeft), cornerRadii:cornerRadii)
+        Layout.roundRect(self._target, byRoundingCorners: ([UIRectCorner.TopLeft, UIRectCorner.BottomLeft]), cornerRadii:cornerRadii)
         return self
     }
     
     func roundRectRight(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
-        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopRight | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        Layout.roundRect(self._target, byRoundingCorners: ([UIRectCorner.TopRight, UIRectCorner.BottomRight]), cornerRadii:cornerRadii)
         return self
     }
     
     func roundRectBottom(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
-        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.BottomLeft | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        Layout.roundRect(self._target, byRoundingCorners: ([UIRectCorner.BottomLeft, UIRectCorner.BottomRight]), cornerRadii:cornerRadii)
         return self
     }
     
     func roundRect(cornerRadii:CGFloat) -> Layout {
         self._target.layoutIfNeeded()
-        Layout.roundRect(self._target, byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.TopRight | UIRectCorner.BottomLeft | UIRectCorner.BottomRight), cornerRadii:cornerRadii)
+        Layout.roundRect(self._target, byRoundingCorners: ([UIRectCorner.TopLeft, UIRectCorner.TopRight, UIRectCorner.BottomLeft, UIRectCorner.BottomRight]), cornerRadii:cornerRadii)
         return self
     }
 }

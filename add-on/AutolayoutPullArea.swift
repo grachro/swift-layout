@@ -55,7 +55,7 @@ extension AutolayoutPullArea {
         return 0.4
     }
     
-    func show(#viewHeight:CGFloat, pullAreaHeight:CGFloat) {
+    func show(viewHeight viewHeight:CGFloat, pullAreaHeight:CGFloat) {
         
         if viewHeight < pullAreaHeight {
             self.topConstraint?.constant = -((pullAreaHeight - viewHeight) / 2 + viewHeight)

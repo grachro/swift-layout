@@ -41,7 +41,7 @@ class RoundedRectViewController: UIViewController {
             .text("Left")
             .roundRectLeft(20)
         
-        let lBottom = Layout.addUILabel(superview: self.view)
+        _ = Layout.addUILabel(superview: self.view)
             .top(10).fromBottom(lLeft.view)
             .left(10).fromRight(lRight.view)
             .width(100)
@@ -50,15 +50,15 @@ class RoundedRectViewController: UIViewController {
             .text("Bottom")
             .roundRectBottom(20)
         
-        let layout5 = Layout.addSubView(Layout.createCharWrappingLabel("TopLeft\nBottomRight"), superview: self.view)
+        _ = Layout.addSubView(Layout.createCharWrappingLabel("TopLeft\nBottomRight"), superview: self.view)
             .top(10).fromBottom(lRight.view)
             .left(50).fromSuperviewLeft()
             .width(100)
             .height(100)
             .backgroundColor(UIColor.grayColor())
-            .roundRect(byRoundingCorners: (UIRectCorner.TopLeft | UIRectCorner.BottomRight), cornerRadii: 20)
+            .roundRect(byRoundingCorners: ([UIRectCorner.TopLeft, UIRectCorner.BottomRight]), cornerRadii: 20)
         
-        let layout6 = Layout.addSubView(Layout.createCharWrappingLabel("all"), superview: self.view)
+        _ = Layout.addSubView(Layout.createCharWrappingLabel("all"), superview: self.view)
             .top(10).fromBottom(lRight.view)
             .left(10).fromRight(lTop.view)
             .width(100)

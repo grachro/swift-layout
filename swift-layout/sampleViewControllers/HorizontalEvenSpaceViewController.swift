@@ -24,7 +24,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
     }
     
     private func coverSpace() {
-        var l1 = UILabel()
+        let l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.addSubView(l1, superview: self.view)
@@ -32,7 +32,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
             .width(30)
             .height(50)
         
-        var l2 = UILabel()
+        let l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.addSubView(l2, superview: self.view)
@@ -41,7 +41,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
             .height(60)
         
         
-        var l3 = UILabel()
+        let l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.addSubView(l3, superview: self.view)
@@ -53,7 +53,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
     }
     
     private func nonCoverSpace() {
-        var l1 = UILabel()
+        let l1 = UILabel()
         l1.text = "l1"
         l1.backgroundColor = UIColor.redColor()
         Layout.addSubView(l1, superview: self.view)
@@ -61,7 +61,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
             .width(30)
             .height(50)
         
-        var l2 = UILabel()
+        let l2 = UILabel()
         l2.text = "l2"
         l2.backgroundColor = UIColor.greenColor()
         Layout.addSubView(l2, superview: self.view)
@@ -70,7 +70,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
             .height(60)
         
         
-        var l3 = UILabel()
+        let l3 = UILabel()
         l3.text = "l3"
         l3.backgroundColor = UIColor.blueColor()
         Layout.addSubView(l3, superview: self.view)

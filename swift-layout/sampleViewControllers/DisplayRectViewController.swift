@@ -31,7 +31,7 @@ class DisplayRectViewController: UIViewController {
             .backgroundColor(UIColor.blueColor())
         
  
-        println(subView.displayRect())
+        print(subView.displayRect())
      
         
         let layout = Layout.addUILabel(superview: self.view)

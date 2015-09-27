@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 .left(20).fromSuperviewLeft()
         }
         
-        let btns = sampleControllers.reduce([]){(var u, var t) -> [UIButton] in
+        let btns = sampleControllers.reduce([]){(var u, t) -> [UIButton] in
             u.append(t.btn)
             return u
         }

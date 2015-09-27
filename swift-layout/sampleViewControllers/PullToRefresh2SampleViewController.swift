@@ -132,22 +132,22 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
     
     
     //スクロール開始
-    func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.puller.beginDragScroll(scrollView)
     }
     
     //スクロール終了
-    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.puller.endDragScroll(scrollView, willDecelerate: decelerate)
     }
     
     //スクロール終了（慣性移動）
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!)  {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView)  {
         self.puller.endScroll(scrollView)
     }
     
     //スクロール中
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         self.puller.dragScroll(scrollView)
     }
     
