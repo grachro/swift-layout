@@ -166,8 +166,8 @@ class Layout {
     }
 
     
-    private let _target:UIView
-    private var superview:UIView
+    weak private var _target:UIView!
+    weak private var superview:UIView!
     private var _lastConstraint:NSLayoutConstraint? = nil
     private var _leftConstraint:NSLayoutConstraint? = nil
     private var _topConstraint:NSLayoutConstraint? = nil
