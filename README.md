@@ -1,8 +1,8 @@
 swift-layout
 ============
 
-SwiftでのAuto Layoutコーディングを助けるためのフレームワークです。
-
+swift-layoutは、Auto Layoutコーディングを助けるためのSwiftクラスです。
+"swift-layout" is use Swift language Auto Layout coding helpler class.
 
 Usage
 --------
