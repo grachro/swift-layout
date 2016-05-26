@@ -627,7 +627,16 @@ extension Layout {
 
         return self
     }
-    
+
+    func sizeToFit() -> Layout {
+        
+        if let ui = self._target as? UILabel {
+            ui.sizeToFit()
+        }
+        
+        return self
+    }
+
     func fitWidthFromText() -> Layout {
         
         if let ui = self._target as? UILabel {
