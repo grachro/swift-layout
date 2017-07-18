@@ -32,17 +32,17 @@ class ViewController: UIViewController {
         
         for t in sampleControllers {
             TouchBlocks.append(t.btn) {
-                self.presentViewController(t.controller, animated: true, completion: nil)
+                self.present(t.controller, animated: true, completion: nil)
             }
             Layout.addSubView(t.btn, superview: self.view)
                 .left(20).fromSuperviewLeft()
         }
         
-        let btns = sampleControllers.reduce([]){(var u, t) -> [UIButton] in
-            u.append(t.btn)
-            return u
+        var btns = [UIButton]()
+        for sc in sampleControllers {
+            btns.append(sc.btn)
         }
-        
+
         Layout.verticalEvenSpaceInCotainer(superview: self.view, views: btns, coverSpace: true)
     }
 

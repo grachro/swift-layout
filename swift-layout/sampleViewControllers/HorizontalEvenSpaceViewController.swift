@@ -14,7 +14,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
 
         coverSpace()
         nonCoverSpace()
@@ -23,10 +23,10 @@ class HorizontalEvenSpaceViewController: UIViewController {
         addReturnBtn()
     }
     
-    private func coverSpace() {
+    fileprivate func coverSpace() {
         let l1 = UILabel()
         l1.text = "l1"
-        l1.backgroundColor = UIColor.redColor()
+        l1.backgroundColor = UIColor.red
         Layout.addSubView(l1, superview: self.view)
             .top(30).fromSuperviewTop()
             .width(30)
@@ -34,7 +34,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         
         let l2 = UILabel()
         l2.text = "l2"
-        l2.backgroundColor = UIColor.greenColor()
+        l2.backgroundColor = UIColor.green
         Layout.addSubView(l2, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -43,7 +43,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         
         let l3 = UILabel()
         l3.text = "l3"
-        l3.backgroundColor = UIColor.blueColor()
+        l3.backgroundColor = UIColor.blue
         Layout.addSubView(l3, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -52,10 +52,10 @@ class HorizontalEvenSpaceViewController: UIViewController {
         Layout.horizontalEvenSpaceInCotainer(superview: self.view, views: [l1,l2,l3], coverSpace: true)
     }
     
-    private func nonCoverSpace() {
+    fileprivate func nonCoverSpace() {
         let l1 = UILabel()
         l1.text = "l1"
-        l1.backgroundColor = UIColor.redColor()
+        l1.backgroundColor = UIColor.red
         Layout.addSubView(l1, superview: self.view)
             .bottom(30).fromSuperviewBottom()
             .width(30)
@@ -63,7 +63,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         
         let l2 = UILabel()
         l2.text = "l2"
-        l2.backgroundColor = UIColor.greenColor()
+        l2.backgroundColor = UIColor.green
         Layout.addSubView(l2, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -72,7 +72,7 @@ class HorizontalEvenSpaceViewController: UIViewController {
         
         let l3 = UILabel()
         l3.text = "l3"
-        l3.backgroundColor = UIColor.blueColor()
+        l3.backgroundColor = UIColor.blue
         Layout.addSubView(l3, superview: self.view)
             .verticalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -82,14 +82,14 @@ class HorizontalEvenSpaceViewController: UIViewController {
     }
     
     
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
         
     }

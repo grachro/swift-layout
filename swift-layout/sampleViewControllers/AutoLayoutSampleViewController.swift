@@ -13,7 +13,7 @@ class AutoLayoutSampleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         
         let centerView = centerViews()
@@ -24,9 +24,9 @@ class AutoLayoutSampleController: UIViewController {
         addReturnBtn()
     }
     
-    private func centerViews() -> UIView {
+    fileprivate func centerViews() -> UIView {
         
-        let color = UIColor.lightGrayColor()
+        let color = UIColor.lightGray
         
         
         
@@ -73,9 +73,9 @@ class AutoLayoutSampleController: UIViewController {
         return 中央
     }
     
-    private func middleViews(centerView:UIView) {
+    fileprivate func middleViews(_ centerView:UIView) {
         
-        let color = UIColor.yellowColor()
+        let color = UIColor.yellow
         
         let d:CGFloat = 40
         
@@ -145,9 +145,9 @@ class AutoLayoutSampleController: UIViewController {
             .backgroundColor(color)
     }
     
-    private func cornerViews(centerView:UIView) {
+    fileprivate func cornerViews(_ centerView:UIView) {
         
-        let color = UIColor.greenColor()
+        let color = UIColor.green
 
         
         let lbl左上 = UILabel()
@@ -218,14 +218,14 @@ class AutoLayoutSampleController: UIViewController {
     }
 
     
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
         
     }

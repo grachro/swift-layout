@@ -27,26 +27,27 @@ class AgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
 
         let prefix = "・"
         let superviewView = self.view
         var baseView:UIView? = nil
         
-        for (_, text) in texts.enumerate() {
+        for (_, text) in texts.enumerated() {
             
             
             let prefixLabel = Layout.createWordWrappingLabel(prefix)
 
             let bodyLabel = Layout.createWordWrappingLabel(text)
-            _ = Layout.addSubView(bodyLabel, superview:superviewView)
-                .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
+            if let view = superviewView {
+                _ = Layout.addSubView(bodyLabel, superview:view)
+                    .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
-            
-            Layout.addSubView(prefixLabel, superview: superviewView)
-                .topIsSame(bodyLabel) //Topは本文と同じ
-                .left(15).fromSuperviewLeft()
-                .backgroundColor(UIColor.redColor())
+                Layout.addSubView(prefixLabel, superview: view)
+                    .topIsSame(bodyLabel) //Topは本文と同じ
+                    .left(15).fromSuperviewLeft()
+                    .backgroundColor(UIColor.red)
+            }
             
             if baseView == nil {
                 Layout.more(bodyLabel)
@@ -70,14 +71,14 @@ class AgreementViewController: UIViewController {
 
  
     
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
     
     }

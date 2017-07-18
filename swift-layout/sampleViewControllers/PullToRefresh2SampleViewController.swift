@@ -58,7 +58,7 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
         
         
         autolayoutPullArea.pullCallback = {(areaHeight: CGFloat, pullAreaHeight: CGFloat) in
-            text.hidden = areaHeight < 20
+            text.isHidden = areaHeight < 20
             
             let percent = areaHeight / maxHeight100
             let percentPull = pullAreaHeight / maxHeight100
@@ -96,7 +96,7 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .bottomIsSameSuperview()
             .height(50)
             .backgroundColor(UIColor(red:0.86, green:0.87, blue:0.87, alpha:1.0))
-            .textColor(UIColor.blackColor())
+            .textColor(UIColor.black)
  
 
         Layout.addSubView(tableView, superview: self.view)
@@ -104,9 +104,9 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .rightIsSameSuperview()
             .top(0).fromBottom(header)
             .bottom(0).fromTop(footer)
-            .backgroundColor(UIColor.lightGrayColor())
+            .backgroundColor(UIColor.lightGray)
         
-        footer.addTarget(self, action: "goview1", forControlEvents: UIControlEvents.TouchUpInside)
+        footer.addTarget(self, action: #selector(PullToRefresh2SampleViewController.goview1), for: UIControlEvents.touchUpInside)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -119,41 +119,41 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
 
     
     //UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 50
     }
     
     
     //UITableViewDataSource
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         return cell
     }
     
     
     //スクロール開始
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.puller.beginDragScroll(scrollView)
     }
     
     //スクロール終了
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.puller.endDragScroll(scrollView, willDecelerate: decelerate)
     }
     
     //スクロール終了（慣性移動）
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView)  {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)  {
         self.puller.endScroll(scrollView)
     }
     
     //スクロール中
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.puller.dragScroll(scrollView)
     }
     
     
     func goview1() {
-        self.dismissViewControllerAnimated(true, completion:nil)
+        self.dismiss(animated: true, completion:nil)
     }
     
     

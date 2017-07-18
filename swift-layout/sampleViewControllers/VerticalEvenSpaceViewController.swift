@@ -13,7 +13,7 @@ class VerticalEvenSpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         threeItems()
         fourItems()
@@ -27,14 +27,14 @@ class VerticalEvenSpaceViewController: UIViewController {
     func threeItems() {
         let l1 = UILabel()
         l1.text = "l1"
-        l1.backgroundColor = UIColor.redColor()
+        l1.backgroundColor = UIColor.red
         Layout.addSubView(l1, superview: self.view)
             .left(50).fromSuperviewLeft()
             .width(30)
         
         let l2 = UILabel()
         l2.text = "l2"
-        l2.backgroundColor = UIColor.greenColor()
+        l2.backgroundColor = UIColor.green
         Layout.addSubView(l2, superview: self.view)
             .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -42,7 +42,7 @@ class VerticalEvenSpaceViewController: UIViewController {
         
         let l3 = UILabel()
         l3.text = "l3"
-        l3.backgroundColor = UIColor.blueColor()
+        l3.backgroundColor = UIColor.blue
         Layout.addSubView(l3, superview: self.view)
             .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -53,14 +53,14 @@ class VerticalEvenSpaceViewController: UIViewController {
     func fourItems() {
         let l1 = UILabel()
         l1.text = "l1"
-        l1.backgroundColor = UIColor.redColor()
+        l1.backgroundColor = UIColor.red
         Layout.addSubView(l1, superview: self.view)
             .right(50).fromSuperviewRight()
             .width(30)
         
         let l2 = UILabel()
         l2.text = "l2"
-        l2.backgroundColor = UIColor.greenColor()
+        l2.backgroundColor = UIColor.green
         Layout.addSubView(l2, superview: self.view)
             .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -68,7 +68,7 @@ class VerticalEvenSpaceViewController: UIViewController {
         
         let l3 = UILabel()
         l3.text = "l3"
-        l3.backgroundColor = UIColor.blueColor()
+        l3.backgroundColor = UIColor.blue
         Layout.addSubView(l3, superview: self.view)
             .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -76,7 +76,7 @@ class VerticalEvenSpaceViewController: UIViewController {
         
         let l4 = UILabel()
         l4.text = "l4"
-        l4.backgroundColor = UIColor.yellowColor()
+        l4.backgroundColor = UIColor.yellow
         Layout.addSubView(l4, superview: self.view)
             .horizontalCenterIsSame(l1)
             .widthIsSame(l1)
@@ -84,14 +84,14 @@ class VerticalEvenSpaceViewController: UIViewController {
         Layout.verticalEvenSpaceInCotainer(superview: self.view, views: [l1,l2,l3,l4], coverSpace: false)
     }
     
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
         
     }

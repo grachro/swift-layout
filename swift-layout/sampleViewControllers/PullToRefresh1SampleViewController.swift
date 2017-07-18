@@ -18,7 +18,6 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         let maxHeight100:CGFloat = 100
         let autolayoutPullArea = AutolayoutPullArea(minHeight:0,maxHeight:maxHeight100,superview: self.tableView)
-        autolayoutPullArea.layout
         
         let effectView = Layout.createLightBlurEffect()
         Layout.addSubView(effectView, superview: autolayoutPullArea.view)
@@ -64,7 +63,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         
         autolayoutPullArea.pullCallback = {(areaHeight: CGFloat, pullAreaHeight: CGFloat) in
-            text.hidden = areaHeight < 20
+            text.isHidden = areaHeight < 20
             
             if areaHeight < 40 {
                 topBarConstraint?.constant = 20 - (40 - areaHeight) / 2
@@ -99,17 +98,17 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .bottomIsSameSuperview()
             .height(50)
             .backgroundColor(UIColor(red:0.94,green:0.50,blue:0.50,alpha:1.0))
-            .textColor(UIColor.whiteColor())
+            .textColor(UIColor.white)
         
         Layout.addSubView(tableView, superview: self.view)
             .leftIsSameSuperview()
             .rightIsSameSuperview()
             .top(0).fromBottom(header)
             .bottom(0).fromTop(footer)
-            .backgroundColor(UIColor.lightGrayColor())
+            .backgroundColor(UIColor.lightGray)
         
         
-        footer.addTarget(self, action: "goview2", forControlEvents: UIControlEvents.TouchUpInside)
+        footer.addTarget(self, action: #selector(PullToRefresh1SampleViewController.goview2), for: UIControlEvents.touchUpInside)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -121,13 +120,13 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
     }
 
     //UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     
     //UITableViewDataSource
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell()
         if indexPath.row == 0 {
@@ -141,29 +140,29 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
     
     
     //スクロール開始
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.puller.beginDragScroll(scrollView)
     }
     
     //スクロール終了
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.puller.endDragScroll(scrollView, willDecelerate: decelerate)
     }
     
     //
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView)  {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)  {
         self.puller.endScroll(scrollView)
     }
     
     //スクロール中
     //UITableViewDelegate:UIScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.puller.dragScroll(scrollView)
     }
     
     
     func goview2() {
-        self.dismissViewControllerAnimated(true, completion:nil)
+        self.dismiss(animated: true, completion:nil)
     }
 }
 
