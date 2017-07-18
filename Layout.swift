@@ -18,6 +18,7 @@ class LayoutTop {
         self._size = size
     }
     
+    @discardableResult
     func fromTop(_ base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .top, relatedBy: .equal, toItem: base, attribute: .top, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
@@ -25,18 +26,22 @@ class LayoutTop {
         return self._layout
     }
     
+    @discardableResult
     func fromSuperviewTop() -> Layout{
         return fromTop(self._layout.superview)
     }
     
+    @discardableResult
     func fromBottom(_ base:UIView) -> Layout{
         return fromBottomAny(base)
     }
     
+    @discardableResult
     func fromBottom(_ base:UILayoutSupport) -> Layout{
         return fromBottomAny(base)
     }
     
+    @discardableResult
     fileprivate func fromBottomAny(_ base:AnyObject) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .top, relatedBy: .equal, toItem: base, attribute: .bottom, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
@@ -54,10 +59,12 @@ class LayoutBottom {
         self._size = size
     }
     
+    @discardableResult
     func fromTop(_ base:UIView) -> Layout {
         return fromTopAny(base)
     }
     
+    @discardableResult
     func fromTop(_ base:UILayoutSupport) -> Layout {
         return fromTopAny(base)
     }
@@ -68,12 +75,14 @@ class LayoutBottom {
         return self._layout
     }
     
+    @discardableResult
     func fromBottom(_ base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .bottom, relatedBy: .equal, toItem: base, attribute: .bottom, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
+    @discardableResult
     func fromSuperviewBottom() -> Layout{
         return fromBottom(self._layout.superview)
     }
@@ -91,6 +100,7 @@ class LayoutLeft {
     }
     
     
+    @discardableResult
     func fromLeft(_ base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .left, relatedBy: .equal, toItem: base, attribute: .left, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
@@ -98,12 +108,14 @@ class LayoutLeft {
         return self._layout
     }
     
+    @discardableResult
     func fromRight(_ base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .left, relatedBy: .equal, toItem: base, attribute: .right, multiplier: 1.0, constant: self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
+    @discardableResult
     func fromSuperviewLeft() -> Layout {
         return fromLeft(self._layout.superview)
     }
@@ -118,18 +130,21 @@ class LayoutRight {
         self._size = size
     }
     
+    @discardableResult
     func fromLeft(_ base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .right, relatedBy: .equal, toItem: base, attribute: .left, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
+    @discardableResult
     func fromRight(_ base:UIView) -> Layout{
         let l =  NSLayoutConstraint(item: self._layout._target, attribute: .right, relatedBy: .equal, toItem: base, attribute: .right, multiplier: 1.0, constant: -self._size)
         self._layout.addLayoutConstraint(l)
         return self._layout
     }
     
+    @discardableResult
     func fromSuperviewRight() -> Layout{
         return fromRight(self._layout.superview)
     }
@@ -138,10 +153,12 @@ class LayoutRight {
 
 class Layout {
     
+    @discardableResult
     class func more(_ view:UIView) -> Layout {
         return Layout(view: view, superview: view.superview!)
     }
 
+    @discardableResult
     class func addSubView(_ view:UIView, superview:UIView) -> Layout {
         let layout = Layout(view: view, superview: superview)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -149,18 +166,22 @@ class Layout {
         return layout
     }
     
+    @discardableResult
     class func addUIView(superview:UIView) -> Layout {
         return addSubView(UIView(), superview:superview)
     }
     
+    @discardableResult
     class func addUILabel(superview:UIView) -> Layout {
         return addSubView(UILabel(), superview:superview)
     }
     
+    @discardableResult
     class func addUITextField(superview:UIView) -> Layout {
         return addSubView(UITextField(), superview:superview)
     }
     
+    @discardableResult
     class func addSystemTypeBtn(_ title:String, superview:UIView) -> Layout {
         return addSubView(Layout.createSystemTypeBtn(title), superview:superview)
     }
@@ -182,6 +203,7 @@ class Layout {
     }
     
    
+    @discardableResult
     func changeSuperview(newSuperview:UIView) -> Layout {
         
         //remove from old supservire
@@ -200,14 +222,16 @@ class Layout {
     }
 
 
+    @discardableResult
     func lastConstraint(_ constraint:inout NSLayoutConstraint?) -> Layout {
         constraint = self._lastConstraint
         return self
         
     }
     
+    @discardableResult
     func lastConstraintPriority(_ priority:Int) -> Layout {
-        self._lastConstraint?.priority
+        _ = self._lastConstraint?.priority
         return self
     }
 
@@ -230,10 +254,12 @@ class Layout {
         return LayoutTop(layout: self, size: size)
     }
     
+    @discardableResult
     func topIsSame(_ base:UIView) -> Layout {
         return LayoutTop(layout: self, size: 0).fromTop(base)
     }
     
+    @discardableResult
     func topIsSameSuperview() -> Layout {
         return topIsSame(self.superview)
     }
@@ -242,10 +268,12 @@ class Layout {
         return LayoutBottom(layout: self, size: size)
     }
     
+    @discardableResult
     func bottomIsSame(_ base:UIView) -> Layout {
         return LayoutBottom(layout: self, size: 0).fromBottom(base)
     }
     
+    @discardableResult
     func bottomIsSameSuperview() -> Layout {
         return bottomIsSame(self.superview)
     }
@@ -254,10 +282,12 @@ class Layout {
         return LayoutLeft(layout: self, size: size)
     }
     
+    @discardableResult
     func leftIsSame(_ base:UIView) -> Layout {
         return LayoutLeft(layout: self, size: 0).fromLeft(base)
     }
     
+    @discardableResult
     func leftIsSameSuperview() -> Layout {
         return leftIsSame(self.superview)
     }
@@ -266,14 +296,17 @@ class Layout {
         return LayoutRight(layout: self, size: size)
     }
     
+    @discardableResult
     func rightIsSame(_ base:UIView) -> Layout {
         return LayoutRight(layout: self, size: 0).fromRight(base)
     }
     
+    @discardableResult
     func rightIsSameSuperview() -> Layout {
         return rightIsSame(self.superview)
     }
     
+    @discardableResult
     func coverSuperView() -> Layout {
         rightIsSameSuperview()
         leftIsSameSuperview()
@@ -282,28 +315,33 @@ class Layout {
         return self
     }
     
+    @discardableResult
     func width(_ size:CGFloat) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
         self.addLayoutConstraint(l)
         return self
     }
     
+    @discardableResult
     func widthIsSame(_ base:UIView, constraintOwner:UIView? = nil) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .width, relatedBy: .equal, toItem: base, attribute: .width, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l, constraintOwner:constraintOwner)
         return self
     }
     
+    @discardableResult
     func widthIsSameSuperview() -> Layout {
         return widthIsSame(self.superview)
     }
 
+    @discardableResult
     func height(_ size:CGFloat) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: size)
         self.addLayoutConstraint(l)
         return self
     }
     
+    @discardableResult
     func heightIsSame(_ base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .height, relatedBy: .equal, toItem: base, attribute: .height, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
@@ -311,16 +349,19 @@ class Layout {
     }
     
     //TODO test
+    @discardableResult
     func heightIsSameSuperview() -> Layout {
         return heightIsSame(self.superview)
     }
 
+    @discardableResult
     func horizontalCenterIsSame(_ base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: base, attribute: .centerX, relatedBy: .equal, toItem: self._target, attribute: .centerX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
+    @discardableResult
     func verticalCenterIsSame(_ base:UIView) -> Layout {
         let l =  NSLayoutConstraint(item: base, attribute: .centerY, relatedBy: .equal, toItem: self._target, attribute: .centerY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
@@ -328,12 +369,14 @@ class Layout {
     }
     
     
+    @discardableResult
     func horizontalCenterInSuperview() -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .centerX, relatedBy: .equal, toItem: self.superview, attribute: .centerX, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
         return self
     }
     
+    @discardableResult
     func verticalCenterInSuperview() -> Layout {
         let l =  NSLayoutConstraint(item: self._target, attribute: .centerY, relatedBy: .equal, toItem: self.superview, attribute: .centerY, multiplier: 1.0, constant: 0)
         self.addLayoutConstraint(l)
@@ -345,11 +388,13 @@ class Layout {
 //change constant
 extension Layout {
 
+    @discardableResult
     func toLeft(_ size:CGFloat) -> Layout {
         self._leftConstraint?.constant = size
         return self
     }
     
+    @discardableResult
     func toTop(_ size:CGFloat) -> Layout {
         self._topConstraint?.constant = size
         return self
@@ -422,7 +467,7 @@ extension Layout {
     
     class func horizontalEvenSpaceInCotainer(superview:UIView ,layouts:[Layout],coverSpace:Bool) {
         var tmpView:[UIView] = []
-        layouts.map({tmpView.append($0.target)})
+        _ = layouts.map({tmpView.append($0.target)})
         horizontalEvenSpaceInCotainer(superview:superview ,views:tmpView,coverSpace:coverSpace)
     }
     
@@ -577,36 +622,43 @@ extension Layout {
 
 //UIView全般
 extension Layout {
+    @discardableResult
     func backgroundColor(_ color:UIColor) -> Layout {
         self._target.backgroundColor = color
         return self
     }
     
+    @discardableResult
     func backgroundColorAlpha(_ alpha:CGFloat) -> Layout {
         self._target.backgroundColor = self._target.backgroundColor?.withAlphaComponent(alpha)
         return self
     }
     
+    @discardableResult
     func hide() -> Layout {
         self._target.isHidden =  true
         return self
     }
     
+    @discardableResult
     func show() -> Layout {
         self._target.isHidden =  false
         return self
     }
     
+    @discardableResult
     func hidden(_ val:Bool) -> Layout {
         self._target.isHidden =  val
         return self
     }
 
+    @discardableResult
     func toggle(_ val:Bool) -> Layout {
         self._target.isHidden =  !self._target.isHidden
         return self
     }
     
+    @discardableResult
     func zPosition(_ val:CGFloat) -> Layout {
         self._target.layer.zPosition = val
         return self
@@ -617,6 +669,7 @@ extension Layout {
 //text,label系
 extension Layout {
     
+    @discardableResult
     func text(_ text:String) -> Layout {
         
         if let l = self._target as? UILabel {
@@ -628,6 +681,7 @@ extension Layout {
         return self
     }
 
+    @discardableResult
     func sizeToFit() -> Layout {
         
         if let ui = self._target as? UILabel {
@@ -637,6 +691,7 @@ extension Layout {
         return self
     }
 
+    @discardableResult
     func fitWidthFromText() -> Layout {
         
         if let ui = self._target as? UILabel {
@@ -648,6 +703,7 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func textAlignmentIsLeft() -> Layout {
         if let l = self._target as? UILabel {
             l.textAlignment = .left
@@ -657,6 +713,7 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func textAlignmentIsCenter() -> Layout {
         if let l = self._target as? UILabel {
             l.textAlignment = .center
@@ -666,6 +723,7 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func textAlignmentIsRight() -> Layout {
         if let l = self._target as? UILabel {
             l.textAlignment = .right
@@ -675,6 +733,7 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func font(_ font:UIFont) -> Layout {
         if let l = self._target as? UILabel {
             l.font = font
@@ -684,16 +743,19 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func systemFont(_ size:CGFloat) -> Layout {
         self.font(UIFont.systemFont(ofSize: size))
         return self
     }
     
+    @discardableResult
     func boldSystemFont(_ size:CGFloat) -> Layout {
         self.font(UIFont.boldSystemFont(ofSize: size))
         return self
     }
     
+    @discardableResult
     func textColor(_ color:UIColor) -> Layout {
         if let l = self._target as? UILabel {
             l.textColor = color
@@ -710,6 +772,8 @@ extension Layout {
 
 //text系
 extension Layout {
+    
+    @discardableResult
     func textFieldBorderStyle(_ style:UITextBorderStyle) -> Layout {
         if let t = self._target as? UITextField {
             t.borderStyle = style
@@ -717,6 +781,7 @@ extension Layout {
         return self
     }
     
+    @discardableResult
     func keyboardType(_ type:UIKeyboardType) -> Layout {
         if let t = self._target as? UITextField {
             t.keyboardType = type
@@ -727,6 +792,7 @@ extension Layout {
 
 //イベント系
 extension Layout {
+    @discardableResult
     func touchUpInside(_ block:@escaping () -> Void) -> Layout {
         if let c = self._target as? UIControl {
             TouchBlocks.append(c, block: block)

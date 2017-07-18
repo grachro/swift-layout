@@ -106,7 +106,7 @@ class PullToRefresh2SampleViewController: UIViewController, UITableViewDelegate,
             .bottom(0).fromTop(footer)
             .backgroundColor(UIColor.lightGray)
         
-        footer.addTarget(self, action: "goview1", for: UIControlEvents.touchUpInside)
+        footer.addTarget(self, action: #selector(PullToRefresh2SampleViewController.goview1), for: UIControlEvents.touchUpInside)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self

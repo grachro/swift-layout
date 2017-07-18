@@ -18,7 +18,6 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
         
         let maxHeight100:CGFloat = 100
         let autolayoutPullArea = AutolayoutPullArea(minHeight:0,maxHeight:maxHeight100,superview: self.tableView)
-        autolayoutPullArea.layout
         
         let effectView = Layout.createLightBlurEffect()
         Layout.addSubView(effectView, superview: autolayoutPullArea.view)
@@ -109,7 +108,7 @@ class PullToRefresh1SampleViewController: UIViewController, UITableViewDelegate,
             .backgroundColor(UIColor.lightGray)
         
         
-        footer.addTarget(self, action: "goview2", for: UIControlEvents.touchUpInside)
+        footer.addTarget(self, action: #selector(PullToRefresh1SampleViewController.goview2), for: UIControlEvents.touchUpInside)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
