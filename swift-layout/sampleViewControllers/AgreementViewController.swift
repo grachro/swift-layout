@@ -27,13 +27,13 @@ class AgreementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
 
         let prefix = "・"
         let superviewView = self.view
         var baseView:UIView? = nil
         
-        for (_, text) in texts.enumerate() {
+        for (_, text) in texts.enumerated() {
             
             
             let prefixLabel = Layout.createWordWrappingLabel(prefix)
@@ -46,7 +46,7 @@ class AgreementViewController: UIViewController {
             Layout.addSubView(prefixLabel, superview: superviewView)
                 .topIsSame(bodyLabel) //Topは本文と同じ
                 .left(15).fromSuperviewLeft()
-                .backgroundColor(UIColor.redColor())
+                .backgroundColor(UIColor.red)
             
             if baseView == nil {
                 Layout.more(bodyLabel)
@@ -70,14 +70,14 @@ class AgreementViewController: UIViewController {
 
  
     
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
     
     }

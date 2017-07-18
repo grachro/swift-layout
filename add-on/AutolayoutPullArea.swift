@@ -11,19 +11,19 @@ import UIKit
 
 class AutolayoutPullArea:ScrollViewPullArea {
     
-    private var _minHeight:CGFloat
-    private var _maxHeight:CGFloat
+    fileprivate var _minHeight:CGFloat
+    fileprivate var _maxHeight:CGFloat
     
     var topConstraint:NSLayoutConstraint?
     var headerConstraint:NSLayoutConstraint?
     
     let view = UIView()
-    private var _layout:Layout?
+    fileprivate var _layout:Layout?
     var layout:Layout {
         get {return _layout!}
     }
     
-    var pullCallback:((viewHeight:CGFloat, pullAreaHeight:CGFloat) -> Void)? = nil
+    var pullCallback:((_ viewHeight:CGFloat, _ pullAreaHeight:CGFloat) -> Void)? = nil
     
     init(minHeight:CGFloat, maxHeight:CGFloat, superview:UIView) {
         
@@ -51,11 +51,11 @@ extension AutolayoutPullArea {
         return _maxHeight
     }
     
-    func animationSpeed() -> NSTimeInterval {
+    func animationSpeed() -> TimeInterval {
         return 0.4
     }
     
-    func show(viewHeight viewHeight:CGFloat, pullAreaHeight:CGFloat) {
+    func show(viewHeight:CGFloat, pullAreaHeight:CGFloat) {
         
         if viewHeight < pullAreaHeight {
             self.topConstraint?.constant = -((pullAreaHeight - viewHeight) / 2 + viewHeight)
@@ -66,7 +66,7 @@ extension AutolayoutPullArea {
         self.headerConstraint?.constant = viewHeight
         view.superview?.layoutIfNeeded()
         
-        self.pullCallback?(viewHeight: viewHeight, pullAreaHeight:pullAreaHeight)
+        self.pullCallback?(viewHeight, pullAreaHeight)
         view.layoutIfNeeded()
         
     }

@@ -19,7 +19,7 @@ class ScrollViewAndWordWrappingLabelController: UIViewController {
             .leftIsSameSuperview()
             .rightIsSameSuperview()
             .bottomIsSameSuperview()
-            .backgroundColor(UIColor.grayColor())
+            .backgroundColor(UIColor.gray)
   
 
         let label1 = Layout.createWordWrappingLabel("秋の田の かりほの庵の 苫をあらみ 我が衣手は 露にぬれつつ")
@@ -27,30 +27,30 @@ class ScrollViewAndWordWrappingLabelController: UIViewController {
             .topIsSameSuperview()
             .leftIsSameSuperview()
             .widthIsSame(self.view, constraintOwner: self.view)//<< important
-            .font(UIFont.systemFontOfSize(60))
-            .backgroundColor(UIColor.greenColor())
+            .font(UIFont.systemFont(ofSize: 60))
+            .backgroundColor(UIColor.green)
 
         let label2 = Layout.createWordWrappingLabel("春過ぎて 夏来にけらし 白妙の 衣ほすてふ 天の香具山")
         Layout.addSubView(label2, superview: scrollView)
             .top(20).fromBottom(label1)
             .leftIsSameSuperview()
             .widthIsSame(self.view, constraintOwner: self.view)//<< important
-            .font(UIFont.systemFontOfSize(60))
-            .backgroundColor(UIColor.yellowColor())
+            .font(UIFont.systemFont(ofSize: 60))
+            .backgroundColor(UIColor.yellow)
             .bottomIsSameSuperview() //<< important
         
         //戻るボタン
         addReturnBtn()
     }
 
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
         
     }

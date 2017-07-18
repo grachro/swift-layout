@@ -13,7 +13,7 @@ class DisplayRectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
  
         let viewA = Layout.addUIView(superview: self.view)
@@ -21,14 +21,14 @@ class DisplayRectViewController: UIViewController {
             .top(10).fromSuperviewTop()
             .width(100)
             .height(50)
-            .backgroundColor(UIColor.redColor())
+            .backgroundColor(UIColor.red)
         
         let subView = Layout.addUIView(superview: viewA.view)
             .left(30).fromSuperviewLeft()
             .top(15).fromSuperviewTop()
             .width(20)
             .height(20)
-            .backgroundColor(UIColor.blueColor())
+            .backgroundColor(UIColor.blue)
         
  
         print(subView.displayRect())
@@ -48,14 +48,14 @@ class DisplayRectViewController: UIViewController {
         addReturnBtn()
     }
 
-    private func addReturnBtn() {
+    fileprivate func addReturnBtn() {
         let btn = Layout.createSystemTypeBtn("return")
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
         
         TouchBlocks.append(btn){
-            self.dismissViewControllerAnimated(true, completion:nil)
+            self.dismiss(animated: true, completion:nil)
         }
         
     }

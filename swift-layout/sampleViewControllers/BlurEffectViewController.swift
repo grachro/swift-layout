@@ -19,20 +19,20 @@ class BlurEffectViewController: UIViewController {
         super.viewDidLoad()
 
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         //背景
         let text1 = Layout.createCharWrappingLabel("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         Layout.addSubView(text1, superview: self.view)
-            .font(UIFont.systemFontOfSize(20))
+            .font(UIFont.systemFont(ofSize: 20))
             .width(120)
             .top(20).fromSuperviewTop()
             .horizontalCenterInSuperview()
 
         let text2 = Layout.createCharWrappingLabel("ABCDEFG")
         Layout.addSubView(text2, superview: self.view)
-            .font(UIFont.boldSystemFontOfSize(40))
-            .textColor(UIColor.redColor())
+            .font(UIFont.boldSystemFont(ofSize: 40))
+            .textColor(UIColor.red)
             .width(120)
             .top(20).fromBottom(text1)
             .horizontalCenterInSuperview()
@@ -87,12 +87,12 @@ class BlurEffectViewController: UIViewController {
         Layout.addSubView(btn, superview: self.view)
             .bottomIsSameSuperview()
             .rightIsSameSuperview()
-            .touchUpInside({self.dismissViewControllerAnimated(true, completion:nil)})
+            .touchUpInside({self.dismiss(animated: true, completion:nil)})
         
    
     }
 
-    func toggle(id:Int) {
+    func toggle(_ id:Int) {
         
         switch id {
             

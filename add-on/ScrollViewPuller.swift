@@ -12,40 +12,40 @@ import UIKit
 protocol ScrollViewPullArea {
     func minHeight() -> CGFloat
     func maxHeight() -> CGFloat
-    func animationSpeed() -> NSTimeInterval
-    func show(viewHeight viewHeight:CGFloat, pullAreaHeight:CGFloat)
+    func animationSpeed() -> TimeInterval
+    func show(viewHeight:CGFloat, pullAreaHeight:CGFloat)
 }
 
 class ScrollViewPuller {
     
-    private var target:UIScrollView? = nil
+    fileprivate var target:UIScrollView? = nil
     
-    private var pullArea:ScrollViewPullArea? = nil
-    private var pullAreaHeight:CGFloat = 0
+    fileprivate var pullArea:ScrollViewPullArea? = nil
+    fileprivate var pullAreaHeight:CGFloat = 0
     
-    private var lastScrollViewOffsetY:CGFloat = 0
-    private var draggingDistance:CGFloat = 0
-    private var isDrag = false
+    fileprivate var lastScrollViewOffsetY:CGFloat = 0
+    fileprivate var draggingDistance:CGFloat = 0
+    fileprivate var isDrag = false
     
-    private var isPull:Bool {
+    fileprivate var isPull:Bool {
         get {
             return (scrollHeight < 0) //引っ張り中?
         }
     }
     
-    private var isUpWay:Bool {
+    fileprivate var isUpWay:Bool {
         get {
             return (draggingDistance < 0) //上に移動中
         }
     }
     
-    private var isDownWay:Bool {
+    fileprivate var isDownWay:Bool {
         get {
             return (0 < draggingDistance) //下に移動中
         }
     }
     
-    private var scrollHeight:CGFloat {
+    fileprivate var scrollHeight:CGFloat {
         get {
             if self.target == nil {
                 return 0
@@ -58,7 +58,7 @@ class ScrollViewPuller {
 
 extension ScrollViewPuller {
     
-    func begin(target:UIScrollView, pullArea:ScrollViewPullArea) {
+    func begin(_ target:UIScrollView, pullArea:ScrollViewPullArea) {
         self.target = target
         self.pullArea = pullArea
         self.minDisplay()
@@ -67,13 +67,13 @@ extension ScrollViewPuller {
     
     //ドラッグスクロール開始
     //call from scrollViewWillBeginDragging(scrollView: UIScrollView!)
-    func beginDragScroll(scrollView: UIScrollView!) {
+    func beginDragScroll(_ scrollView: UIScrollView!) {
         self.isDrag=true
     }
     
     //ドラッグスクロール終了
     //call from scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool)
-    func endDragScroll(scrollView: UIScrollView!!, willDecelerate decelerate: Bool) {
+    func endDragScroll(_ scrollView: UIScrollView?!, willDecelerate decelerate: Bool) {
         
         if self.target == nil {
             return
@@ -108,7 +108,7 @@ extension ScrollViewPuller {
     
     //慣性スクロール終了(this event is after endDragScroll())
     //call from scrollViewDidEndDecelerating(scrollView: UIScrollView!)
-    func endScroll(scrollView: UIScrollView!) {
+    func endScroll(_ scrollView: UIScrollView!) {
         
         let offsetY = self.target!.contentOffset.y
         if self.pullArea!.maxHeight() <= -offsetY {
@@ -121,7 +121,7 @@ extension ScrollViewPuller {
     
     //スクロール中
     //call from scrollViewDidScroll(scrollView: UIScrollView!)
-    func dragScroll(scrollView: UIScrollView!) {
+    func dragScroll(_ scrollView: UIScrollView!) {
         
         if self.target == nil {
             return
@@ -139,7 +139,7 @@ extension ScrollViewPuller {
         self.lastScrollViewOffsetY = self.scrollHeight
     }
     
-    private func changeDragginAndPulling() {
+    fileprivate func changeDragginAndPulling() {
         
         if self.target == nil {
             return
@@ -163,8 +163,8 @@ extension ScrollViewPuller {
     }
     
     
-    private func display(height:CGFloat,needFullOpen:Bool) {
-        UIView.animateWithDuration(self.pullArea!.animationSpeed(), animations: {
+    fileprivate func display(_ height:CGFloat,needFullOpen:Bool) {
+        UIView.animate(withDuration: self.pullArea!.animationSpeed(), animations: {
             var inset = self.target!.contentInset
             inset.top = height
             self.target!.contentInset = inset
@@ -180,11 +180,11 @@ extension ScrollViewPuller {
         })
     }
     
-    private func minDisplay() {
+    fileprivate func minDisplay() {
         display(self.pullArea!.minHeight(), needFullOpen:false)
     }
     
-    private func maxDisplay() {
+    fileprivate func maxDisplay() {
         display(self.pullArea!.maxHeight(), needFullOpen:true)
     }
     
