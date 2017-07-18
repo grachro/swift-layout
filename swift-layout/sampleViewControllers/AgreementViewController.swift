@@ -39,14 +39,15 @@ class AgreementViewController: UIViewController {
             let prefixLabel = Layout.createWordWrappingLabel(prefix)
 
             let bodyLabel = Layout.createWordWrappingLabel(text)
-            _ = Layout.addSubView(bodyLabel, superview:superviewView)
-                .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
+            if let view = superviewView {
+                _ = Layout.addSubView(bodyLabel, superview:view)
+                    .backgroundColor( UIColor(red: 0.8, green: 0.9, blue: 0, alpha: 0.5))
             
-            
-            Layout.addSubView(prefixLabel, superview: superviewView)
-                .topIsSame(bodyLabel) //Topは本文と同じ
-                .left(15).fromSuperviewLeft()
-                .backgroundColor(UIColor.red)
+                Layout.addSubView(prefixLabel, superview: view)
+                    .topIsSame(bodyLabel) //Topは本文と同じ
+                    .left(15).fromSuperviewLeft()
+                    .backgroundColor(UIColor.red)
+            }
             
             if baseView == nil {
                 Layout.more(bodyLabel)

@@ -38,11 +38,11 @@ class ViewController: UIViewController {
                 .left(20).fromSuperviewLeft()
         }
         
-        let btns = sampleControllers.reduce([]){(u, t) -> [UIButton] in
-            u.append(t.btn)
-            return u
+        var btns = [UIButton]()
+        for sc in sampleControllers {
+            btns.append(sc.btn)
         }
-        
+
         Layout.verticalEvenSpaceInCotainer(superview: self.view, views: btns, coverSpace: true)
     }
 
